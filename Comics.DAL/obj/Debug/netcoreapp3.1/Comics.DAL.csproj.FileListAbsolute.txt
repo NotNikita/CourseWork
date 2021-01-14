@@ -1,0 +1,12 @@
+D:\UniverCity\iTransition\Comics\Comics.DAL\bin\Debug\netcoreapp3.1\Comics.DAL.deps.json
+D:\UniverCity\iTransition\Comics\Comics.DAL\bin\Debug\netcoreapp3.1\Comics.DAL.dll
+D:\UniverCity\iTransition\Comics\Comics.DAL\bin\Debug\netcoreapp3.1\Comics.DAL.pdb
+D:\UniverCity\iTransition\Comics\Comics.DAL\bin\Debug\netcoreapp3.1\Comics.Domain.dll
+D:\UniverCity\iTransition\Comics\Comics.DAL\bin\Debug\netcoreapp3.1\Comics.Domain.pdb
+D:\UniverCity\iTransition\Comics\Comics.DAL\obj\Debug\netcoreapp3.1\Comics.DAL.csprojAssemblyReference.cache
+D:\UniverCity\iTransition\Comics\Comics.DAL\obj\Debug\netcoreapp3.1\Comics.DAL.AssemblyInfoInputs.cache
+D:\UniverCity\iTransition\Comics\Comics.DAL\obj\Debug\netcoreapp3.1\Comics.DAL.AssemblyInfo.cs
+D:\UniverCity\iTransition\Comics\Comics.DAL\obj\Debug\netcoreapp3.1\Comics.DAL.csproj.CopyComplete
+D:\UniverCity\iTransition\Comics\Comics.DAL\obj\Debug\netcoreapp3.1\Comics.DAL.dll
+D:\UniverCity\iTransition\Comics\Comics.DAL\obj\Debug\netcoreapp3.1\Comics.DAL.pdb
+D:\UniverCity\iTransition\Comics\Comics.DAL\obj\Debug\netcoreapp3.1\Comics.DAL.csproj.CoreCompileInputs.cache
