@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using CloudinaryDotNet;
@@ -21,21 +22,25 @@ namespace Comics.Services
             cloudinary = new Cloudinary(account);
         }
 
-        public async Task UploadImageAsync(string imagePath) //+ public_id
+        public async Task<string> UploadImageAsync(string imagePath, Stream imageStream) //+ public_id
         {
             try
             {
                 var uploadParams = new ImageUploadParams()
                 {
-                    File = new FileDescription(imagePath)
-                    //,PublicId = "sample_id" по которому будет уже реализована загрузка из сервера картинок, можно организовывать в папки: user/public_id
+                    File = new FileDescription(imagePath, imageStream)
+
+                    //PublicId = "sample_id" по которому будет уже реализована загрузка из сервера картинок, можно организовывать в папки: user/public_id
                 };
 
                 var uploadResult = await cloudinary.UploadAsync(uploadParams);
+                return uploadResult.Url.AbsoluteUri;
                 //Log "upload successfully"
             }
-            catch (Exception e)
+            catch (NullReferenceException e)
             {
+                Console.WriteLine($"ImageManagment Service. NULL REF in upload async. {e.Message}");
+                return null;
                 //Log error occured e.Message
             }
         }

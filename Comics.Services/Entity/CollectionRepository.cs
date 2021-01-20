@@ -28,7 +28,7 @@ namespace Comics.Services.Entity
         {
             return db.Collections.Where(x => x.User.Id == user.Id).ToList();
         }
-        public Collection GetCollectionDB(int? id)
+        public Collection GetCollectionById(int? id)
         {
             return db.Collections.Where(x => x.Id == id).FirstOrDefault();
         }
@@ -50,9 +50,9 @@ namespace Comics.Services.Entity
         {
             return db.Collections.Where(c => c.User.Id == user.Id).ToList();
         }
-        public Collection GetDetailCollection(int? id)
+        public IEnumerable<BaseItem> GetCollectionItems(int? id)
         {
-            return db.Collections.Where(x => x.Id == id).FirstOrDefault();
+            return db.BaseItems.Where(c => c.CollectionId == id).ToList();
         }
     }
 }

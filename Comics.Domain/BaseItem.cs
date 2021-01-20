@@ -31,5 +31,8 @@ namespace Comics.Domain
 
         [Column("Created")]
         public DateTime Created { get; set; }
+
+        [Column("CollectionId")]
+        public int CollectionId { get; set; }
     }
 }

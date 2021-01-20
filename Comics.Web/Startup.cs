@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Identity;
 using Comics.Domain;
 using Comics.Services.Abstract;
 using Comics.Services.Entity;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace Comics.Web
 {
@@ -34,9 +36,32 @@ namespace Comics.Web
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(ICollRepository<>), typeof(CollRepository<>));
             services.AddTransient<ICollectionRepository, CollectionRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddScoped<IEmail, Email>();
+            services.AddSingleton<ImageManagment>();
 
-            services.AddControllersWithViews();
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddControllersWithViews()
+                .AddViewLocalization()
+                .AddDataAnnotationsLocalization();
             services.AddRazorPages();
+            var supportedCultures = new[]
+            {
+                new CultureInfo("ru"),
+                new CultureInfo("en")
+            };
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture("ru");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+                options.RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                    new QueryStringRequestCultureProvider(),
+                    new CookieRequestCultureProvider(),
+                };
+            });
 
             services.AddIdentity<User, IdentityRole>(options =>
             {
@@ -65,6 +90,7 @@ namespace Comics.Web
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseRequestLocalization();
 
             app.UseRouting();
 

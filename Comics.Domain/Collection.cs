@@ -19,9 +19,11 @@ namespace Comics.Domain
         public IEnumerable<BaseItem> Items { get; set; }
 
         [Column("UserId")]
+        public string UserId { get; set; }
+        
+        [Column("User")]
         public User User { get; set; }
 
-        [Url]
         [Column("Image")]
         public string Img { get; set; }
     }

@@ -5,37 +5,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
 
 <div>
-    <h4>Collection</h4>
+
+    <h4>@Html.DisplayFor(model => model.Theme)</h4>
+    <p style="text-align:right">Created by "Username with link to profile"</p>
+
+
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Theme)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Theme)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Img)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Img)
+        <dl class="col">
+            <div class="col-sm-7">
+                <a class="font-weight-bold">Описание</a>
+            </div>
+            <div class="col-sm-7">
+                @Markdown.ParseHtmlString(Model.Description)
+            </div>
+        </dl>
+        <dd class="col-sm-5">
+            <img class="img-thumbnail" src="@Model.Img" width="500" height="670" alt="Collection image">
         </dd>
     </dl>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Items)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="@item.Img" width="300" height="400" alt="Collection image">
+                            <div class="card-body">
+                                <p class="card-title">@item.Name</p>
+                                <p class="card-text">@Markdown.ParseHtmlString(item.Tags)</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">View</a>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</button>
+                                    </div>
+                                    <small class="text-muted">@item.Price $</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |

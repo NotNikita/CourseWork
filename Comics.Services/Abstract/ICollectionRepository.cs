@@ -7,13 +7,13 @@ namespace Comics.Services.Abstract
     {
         public IEnumerable<Collection> GetAllCollections();
         public IEnumerable<Collection> MyCollections(User user);
-        public Collection GetCollectionDB(int? id);
+        public Collection GetCollectionById(int? id);
 
         public void AddCollectionDB(Collection coll);
         public void UpdateCollection(Collection coll);
         public void DeleteCollection(Collection coll);
 
         public IEnumerable<Collection> GetUserCollections(User user);
-        public Collection GetDetailCollection(int? id);
+        public IEnumerable<BaseItem> GetCollectionItems(int? id);
     }
 }

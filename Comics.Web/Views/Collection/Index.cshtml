@@ -1,54 +1,65 @@
-﻿@model IEnumerable<Comics.Domain.Collection>
+﻿@model IEnumerable<Collection>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Index page</h1>
+        <p class="lead text-muted">Here is album of all existing collections on site. You can create your own or look at creation of another user! Check them out and leave some comments.</p>
+        <p>
+            <a asp-action="Create" class="btn btn-primary my-2">Create collection</a>
+            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        </p>
+    </div>
+</section>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Theme)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Img)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Theme)
-            </td>
-            <td>
-                <img src="@item.Img" width="300" height="300">
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="@item.Img"  height="650" alt="Collection image">
+                        <div class="card-body">
+                            <p class="card-title">@item.Name</p>
+                            <p class="card-text">@Markdown.ParseHtmlString(item.Description)</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">View</a>
+                                    <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+                                    {
+                                <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    }
+                                </div>
+                                <small class="text-muted">@item.Theme</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <a href="@Url.Action( "Create", "Collection")">
+                        <img class="card-img-top" src="http://dancesportglobal.com/wp-content/uploads/2016/09/plus-icon-27951.png" alt="Collection image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<script src="../../assets/js/vendor/holder.min.js"></script>

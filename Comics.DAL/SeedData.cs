@@ -94,6 +94,7 @@ namespace Comics.DAL
                             Description = "Тестовая коллекция номер 1",
                             Theme = "Comics",
                             Items = new List<BaseItem> { db.Comics.FirstOrDefault(c => c.Id == 1), db.Comics.FirstOrDefault(c => c.Id == 2) , db.Comics.FirstOrDefault(c => c.Id == 3) },
+                            UserId = curr_admin.Id,
                             User = curr_admin,
                             Img = "https://res.cloudinary.com/dynastycomic/image/upload/v1610635534/lf-109_ee7gpe.jpg"
                         },
@@ -104,6 +105,7 @@ namespace Comics.DAL
                             Description = "Тестовая коллекция номер 2",
                             Theme = "Comics",
                             Items = new List<BaseItem> { db.Comics.FirstOrDefault(c => c.Id == 3), db.Comics.FirstOrDefault(c => c.Id == 4) },
+                            UserId = curr_admin.Id,
                             User = curr_admin,
                             Img = "https://res.cloudinary.com/dynastycomic/image/upload/v1610635643/large-4249891_atyuji.jpg"
                         }

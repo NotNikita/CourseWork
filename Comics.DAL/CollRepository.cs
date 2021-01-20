@@ -40,14 +40,14 @@ namespace Comics.DAL
 
         }
 
-        void ICollRepository<T>.SaveChanges()
-        {
-            db.SaveChanges();
-        }
-
         void ICollRepository<T>.Update(T entity)
         {
             entities.Update(entity);
+            db.SaveChanges();
+        }
+
+        void ICollRepository<T>.SaveChanges()
+        {
             db.SaveChanges();
         }
     }

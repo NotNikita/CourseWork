@@ -5,7 +5,7 @@ using Comics.Services.Abstract;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Comics.Services.Realization
+namespace Comics.Services.Entity
 {
     public class UserRepository : IUserRepository
     {
@@ -22,7 +22,9 @@ namespace Comics.Services.Realization
 
         public User GetUserInfo(string id)
         {
-            return db.Users.Include(u => u.Collections).Include(u => u.WishList).ThenInclude(u => u.Img).FirstOrDefault(u => u.Id == id);
+            return db.Users.Include(u => u.Collections)
+                .Include(u => u.WishList)
+                .FirstOrDefault(u => u.Id == id);
         }
 
         void IUserRepository.AddUser(User user)

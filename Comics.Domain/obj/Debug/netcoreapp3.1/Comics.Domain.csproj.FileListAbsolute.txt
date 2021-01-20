@@ -4,6 +4,6 @@ D:\UniverCity\iTransition\Comics\Comics.Domain\bin\Debug\netcoreapp3.1\Comics.Do
 D:\UniverCity\iTransition\Comics\Comics.Domain\obj\Debug\netcoreapp3.1\Comics.Domain.csprojAssemblyReference.cache
 D:\UniverCity\iTransition\Comics\Comics.Domain\obj\Debug\netcoreapp3.1\Comics.Domain.AssemblyInfoInputs.cache
 D:\UniverCity\iTransition\Comics\Comics.Domain\obj\Debug\netcoreapp3.1\Comics.Domain.AssemblyInfo.cs
+D:\UniverCity\iTransition\Comics\Comics.Domain\obj\Debug\netcoreapp3.1\Comics.Domain.csproj.CoreCompileInputs.cache
 D:\UniverCity\iTransition\Comics\Comics.Domain\obj\Debug\netcoreapp3.1\Comics.Domain.dll
 D:\UniverCity\iTransition\Comics\Comics.Domain\obj\Debug\netcoreapp3.1\Comics.Domain.pdb
-D:\UniverCity\iTransition\Comics\Comics.Domain\obj\Debug\netcoreapp3.1\Comics.Domain.csproj.CoreCompileInputs.cache

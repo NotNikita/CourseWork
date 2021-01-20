@@ -11,6 +11,10 @@ using Microsoft.AspNetCore.Hosting;
 using Comics.Services.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using System.IO;
+using Comics.Services;
+using Microsoft.AspNetCore.Http;
+using Comics.Web.ViewModel;
 
 namespace Comics.Web.Controllers
 {
@@ -21,14 +25,18 @@ namespace Comics.Web.Controllers
         private ComicsDbContext _db;
         private IWebHostEnvironment _appEnviroment;
         private ICollectionRepository _collectionRepository;
+        private IUserRepository _userRepository;
+        private ImageManagment _imageManagment;
 
-        public CollectionController(ComicsDbContext context, UserManager<User> userManager, ComicsDbContext db, IWebHostEnvironment appEnviroment, ICollectionRepository collectionRepository)
+        public CollectionController(ComicsDbContext context, UserManager<User> userManager, ComicsDbContext db, IWebHostEnvironment appEnviroment, ICollectionRepository collectionRepository, IUserRepository userRepository, ImageManagment imageManagment)
         {
             _context = context;
             _userManager = userManager;
             _db = db;
             _appEnviroment = appEnviroment;
             _collectionRepository = collectionRepository;
+            _userRepository = userRepository;
+            _imageManagment = imageManagment;
         }
 
 
@@ -52,15 +60,26 @@ namespace Comics.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(new Collection());
+            return View(); //new Collection()
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Theme,Img")] Collection collection)
+        public async Task<IActionResult> Create([Bind("Name,Description,Theme")] Collection collection, IFormFile uploadedImage)
         {
             if (ModelState.IsValid)
             {
+                if (uploadedImage != null && uploadedImage.Length > 0)
+                {
+                        string coll_url = await _imageManagment.UploadImageAsync(collection.Name, uploadedImage.OpenReadStream());
+                        collection.Img = coll_url;
+                }
+
+                User user = await _userManager.GetUserAsync(HttpContext.User);
+                collection.UserId = user.Id;
+                collection.User = user;
+
                 _context.Add(collection);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -68,7 +87,7 @@ namespace Comics.Web.Controllers
             return View(collection);
         }
 
-        // GET: Collection/Edit/5
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -87,19 +106,28 @@ namespace Comics.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Theme,Img")] Collection collection)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Theme, Img")] Collection collection, IFormFile uploadedImage)
         {
             if (id != collection.Id)
             {
                 return NotFound();
             }
 
+            if(uploadedImage != null && uploadedImage.Length > 0)
+            {
+                string coll_url = await _imageManagment.UploadImageAsync(collection.Name, uploadedImage.OpenReadStream());
+                collection.Img = coll_url;
+            }
+
             if (ModelState.IsValid)
             {
+
                 try
                 {
-                    _context.Update(collection);
-                    await _context.SaveChangesAsync();
+                    var collectionFromDb = _collectionRepository.GetCollectionById(collection.Id);
+                    collection.UserId = collectionFromDb.UserId;
+                    collection.User = collectionFromDb.User;
+                    _collectionRepository.UpdateCollection(collection);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -119,15 +147,42 @@ namespace Comics.Web.Controllers
 
 
         // GET: Collection/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var collection = await _context.Collections
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var collection = _collectionRepository.GetCollectionById(id);
+
+            collection.User = _userRepository.GetUserDb(collection.UserId);
+            collection.Items = _collectionRepository.GetCollectionItems(id);
+
+            if (collection == null)
+            {
+                return NotFound();
+            }
+
+            return View("Details", collection);
+        }
+
+
+        public async Task<IActionResult> DeleteAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            User user = await _userManager.GetUserAsync(HttpContext.User);
+            var roles = await _userManager.GetRolesAsync(user);
+            if (roles.Any(r => r == "guest" || r == "user"))
+            {
+                return RedirectToAction("Index");
+            }
+
+            var collection = _collectionRepository.GetCollectionById(id);
             if (collection == null)
             {
                 return NotFound();
@@ -137,33 +192,12 @@ namespace Comics.Web.Controllers
         }
 
 
-
-        // GET: Collection/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var collection = await _context.Collections
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (collection == null)
-            {
-                return NotFound();
-            }
-
-            return View(collection);
-        }
-
-        // POST: Collection/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var collection = await _context.Collections.FindAsync(id);
-            _context.Collections.Remove(collection);
-            await _context.SaveChangesAsync();
+            var collection = _collectionRepository.GetCollectionById(id);
+            _collectionRepository.DeleteCollection(collection);
             return RedirectToAction(nameof(Index));
         }
 

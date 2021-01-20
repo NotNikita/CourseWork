@@ -91,6 +91,7 @@ namespace Comics.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
+                        .HasColumnName("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");

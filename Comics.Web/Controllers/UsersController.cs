@@ -2,86 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Comics.DAL;
+using Comics.Domain;
+using Comics.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Comics.Web.Controllers
 {
     public class UsersController : Controller
     {
-        // GET: UsersController
-        public ActionResult Index()
+
+        UserManager<User> _userManager;
+
+
+        public UsersController(IUserRepository _rep, UserManager<User> userManager, ComicsDbContext contex)
         {
-            return View();
+            _userManager = userManager;
         }
 
-        // GET: UsersController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+
+        public async Task<IActionResult> Profile()
         {
-            return View();
+            User currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            return RedirectToAction("Profile", "Account", new { id = currentUser.Id });
+
         }
 
-        // GET: UsersController/Create
-        public ActionResult Create()
+        public IActionResult Index()
         {
-            return View();
+
+            return View(_userManager.Users.ToList());
         }
 
-        // POST: UsersController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: UsersController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: UsersController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UsersController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UsersController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

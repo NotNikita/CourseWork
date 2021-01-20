@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DynastyCollection</title>
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/styles.css" />
 
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 </head>
@@ -45,21 +44,21 @@
                     <ul class="navbar-nav">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
+                            <li class="nav-item m-2">
                                 <a class="nav-ref" asp-controller="Users" asp-action="Profile"><div>Hello @User.Identity.Name</div></a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item m-2">
                                 <a class="nav-ref" asp-area="" asp-controller="Account" asp-action="Logout"><div>Logout</div></a>
                             </li>
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-ref text-dark" asp-area="" asp-controller="Account" asp-action="Login"><div>Login</div></a>
+                            <li class="nav-item m-2">
+                                <a class="nav-ref text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-ref text-dark" asp-area="" asp-controller="Account" asp-action="Register"><div>Register</div></a>
+                            <li class="nav-item m-2">
+                                <a class="nav-ref text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
                             </li>
                         }
                     </ul>

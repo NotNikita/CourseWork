@@ -8,7 +8,7 @@ D:\UniverCity\iTransition\Comics\Comics.Services\bin\Debug\netcoreapp3.1\Comics.
 D:\UniverCity\iTransition\Comics\Comics.Services\obj\Debug\netcoreapp3.1\Comics.Services.csprojAssemblyReference.cache
 D:\UniverCity\iTransition\Comics\Comics.Services\obj\Debug\netcoreapp3.1\Comics.Services.AssemblyInfoInputs.cache
 D:\UniverCity\iTransition\Comics\Comics.Services\obj\Debug\netcoreapp3.1\Comics.Services.AssemblyInfo.cs
+D:\UniverCity\iTransition\Comics\Comics.Services\obj\Debug\netcoreapp3.1\Comics.Services.csproj.CoreCompileInputs.cache
 D:\UniverCity\iTransition\Comics\Comics.Services\obj\Debug\netcoreapp3.1\Comics.Services.csproj.CopyComplete
 D:\UniverCity\iTransition\Comics\Comics.Services\obj\Debug\netcoreapp3.1\Comics.Services.dll
 D:\UniverCity\iTransition\Comics\Comics.Services\obj\Debug\netcoreapp3.1\Comics.Services.pdb
-D:\UniverCity\iTransition\Comics\Comics.Services\obj\Debug\netcoreapp3.1\Comics.Services.csproj.CoreCompileInputs.cache

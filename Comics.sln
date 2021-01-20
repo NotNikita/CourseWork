@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comics.DAL", "Comics.DAL\Comics.DAL.csproj", "{0BA94DBC-C341-41BA-B7A0-F45B92B67352}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comics.DAL", "Comics.DAL\Comics.DAL.csproj", "{0BA94DBC-C341-41BA-B7A0-F45B92B67352}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comics.Services", "Comics.Services\Comics.Services.csproj", "{46B30AB1-570D-4424-B3E4-3C64DD34E656}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comics.Services", "Comics.Services\Comics.Services.csproj", "{46B30AB1-570D-4424-B3E4-3C64DD34E656}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comics.Domain", "Comics.Domain\Comics.Domain.csproj", "{940E37D7-F4E5-4EFE-96A5-E267D7F66F57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comics.Domain", "Comics.Domain\Comics.Domain.csproj", "{940E37D7-F4E5-4EFE-96A5-E267D7F66F57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comics.Web", "Comics.Web\Comics.Web.csproj", "{DFFE9D38-4372-4BD0-8A97-0FA4C11EDCA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comics.Web", "Comics.Web\Comics.Web.csproj", "{DFFE9D38-4372-4BD0-8A97-0FA4C11EDCA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
