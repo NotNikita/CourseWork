@@ -1,46 +1,47 @@
 ﻿@model Comics.Domain.Collection
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<h1>@Localizer["Edit"]</h1>
 
-<h4>Collection</h4>
+<h4>@Localizer["Collection"]</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <img src="@Model.Img" style="width:300px; height:400px;" >
+                <img src="@Model.Img" style="width:300px; height:400px;">
             </div>
-            <div class="form-group">
-                <label class="control-label">Название</label>
+            <div class="form-group col-md-5">
+                <label class="control-label">@Localizer["Name"]</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">Описание</label>
-                <input asp-for="Description" class="form-control" />
+                <label asp-for="Description" class="control-label">@Localizer["Description"]</label>
+                <textarea asp-for="Description" id="summernote"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label class="control-label">Тема</label>
+            <div class="form-group col-md-5">
+                <label class="control-label">@Localizer["Theme"]</label>
                 <select asp-for="Theme" class="form-control">
-                    <option value="Comics">Comics</option>
-                    <option value="Bikes">Bikes</option>
-                    <option value="Whisky">Whisky</option>
+                    <option value="Comics">@Localizer["Comics"]</option>
+                    <option value="Bikes">@Localizer["Bikes"]</option>
+                    <option value="Whisky">@Localizer["Whisky"]</option>
                 </select>
                 <span asp-validation-for="Theme" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label name="uploadedImage">Изображение</label><br />
+                <label name="uploadedImage">@Localizer["Image"]</label><br />
                 <div class="row" style="display: flex;">
                     <div class="col-md-12">
-                        <input type="hidden" asp-for="Img" class="form-control" value="@Model.Img"/>
+                        <input type="hidden" asp-for="Img" class="form-control" value="@Model.Img" />
                     </div>
                     <div class="col-lg-5">
                         <label class="input-file">
@@ -50,17 +51,27 @@
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Post Something....',
+            tabsize: 2,
+            height: 300
+        });
+    </script>
 }
 

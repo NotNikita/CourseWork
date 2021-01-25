@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DynastyCollection</title>
 
+    <link href="~/css/tagify.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
@@ -34,9 +36,13 @@
                         @if (User.IsInRole("admin") || User.IsInRole("moderator"))
                         {
                             <li class="nav-item">
-                                <a class="nav-ref" asp-controller="Users" asp-action="Index"><div>Пользователи</div></a>
+                                <a class="nav-link text-dark" asp-controller="Users" asp-action="Index">Users</a>
                             </li>
                         }
+
+                        <li class="col-md-8" id="tagsInputDiv">
+                            <input class="form-control" name="input-custom-dropdown" type="text" id="tagsInput" placeholder="Теги"/>
+                        </li>
 
                     </ul>
                 </div>
@@ -45,7 +51,7 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item m-2">
-                                <a class="nav-ref" asp-controller="Users" asp-action="Profile"><div>Hello @User.Identity.Name</div></a>
+                                <a class="nav-ref" asp-area="" asp-controller="Users" asp-action="Profile"><div>Hello @User.Identity.Name</div></a>
                             </li>
                             <li class="nav-item m-2">
                                 <a class="nav-ref" asp-area="" asp-controller="Account" asp-action="Logout"><div>Logout</div></a>
@@ -74,15 +80,20 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - Dynasty Comics <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - Dynasty Comics
+            @await Html.PartialAsync("_LanguageSelectorPartial")
         </div>
     </footer>
+
+    <script src="~/js/tagify/tagify.polyfills.min.js"></script>
+    <script src="~/js/tagify/tagify.min.js"></script>
+    <script src="~/js/SearchTags.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.cookie.js"></script>
-    <script src="~/js/timezone.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
 
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>

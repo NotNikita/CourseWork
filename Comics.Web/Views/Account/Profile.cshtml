@@ -3,112 +3,97 @@
 @inject IViewLocalizer Localizer
 @inject UserManager<User> UserManager
 
-
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 @{ var selected = UserManager.FindByIdAsync(Model.user.Id);
     var roles = UserManager.GetRolesAsync(selected.Result);}
 
-<div id="profile-body">
-    <div class="lot-short-desc">
-        <table cellspacing="5">
-            <tr>
-                <td>
-                    @if (Model.user.Img == null)
-                    {
-                        <img id="profileImage" src="https://www.placecage.com/300/300" class="rounded">
-                    }
-                    else
-                    {
-                        <img id="profileImage" src="@Model.user.Img" class="rounded" alt="UserProfile picture" style="width:300px; height:300px">
-                    }
 
-                </td>
-            </tr>
-            <tr>
-                @if (roles.Result.Contains("moderator"))
-                {
-                    <td class="desc-table-title">@Localizer["UserName"] (@Localizer["Moderator"]):</td>
-                }
-                else
-                {
-                    <td class="desc-table-title">@Localizer["UserName"]:</td>
-                }
-                <td class="desc-table-content">@Model.user.UserName</td>
-
-            </tr>
-            <tr>
-                <td class="desc-table-title">@Localizer["Email"]:</td>
-                <td class="desc-table-content">@Model.user.Email</td>
-            </tr>
-            <tr>
-                <td class="desc-table-title">@Localizer["Registered"]:</td>
-                <td class="desc-table-content">@Model.user.Registration</td>
-
-            </tr>
-
-
-            @if (Model.isMe)
+<div class="container">
+    <div class="row m-md-4">
+        <div class="col-md-6">
+            @if (Model.user.Img == null)
             {
-                <tr>
-                    <td class="desc-table-title"><a class="action-link-default" style="margin-top:15px;" asp-controller="Account" asp-action="ChangePassword">@Localizer["ChangePassword"]</a></td>
-                </tr>
+                <img id="profileImage" src="https://www.placecage.com/300/300" class="rounded">
             }
             else
             {
-                if (User.IsInRole("admin"))
-                {
-                    if (roles.Result.Contains("moderator"))
+                <img id="profileImage" src="@Model.user.Img" class="rounded" alt="UserProfile picture" style="width:300px; height:300px">
+            }
+        </div>
+        <div class="col-md-6">
+            @if (roles.Result.Contains("moderator"))
+            {
+                <a class="desc-table-title">@Localizer["UserName"] (@Localizer["Moderator"]):</a>
+            }
+            else
+            {
+                <a class="desc-table-title">@Localizer["UserName"]:</a>
+            }
+            <a class="desc-table-content">@Model.user.UserName</a>
+            <div>
+                <a class="desc-table-title">@Localizer["Email"]:</a>
+                <a class="desc-table-content">@Model.user.Email</a>
+            </div>
+            <div>
+                <a class="desc-table-title">@Localizer["Registered"]:</a>
+                <a class="desc-table-content">@Model.user.Registration</a>
+            </div>
+        </div>
+    </div>
+    <div class="row m-md-5">
+        <div class="col-md-4">
+            @if (User.IsInRole("admin") || Model.isMe)
+            {
+                <a class="btn btn-primary"  asp-action="ChangePassword" asp-route-id="@Model.user.Id">@Localizer["ChangePassword"]</a>
+            }
+        </div>
+        @if (User.IsInRole("admin"))
+        {
+            <div class="col-md-4">
+                <a class="btn btn-success" asp-action="ChangeRole" asp-route-id="@Model.user.Id">
+                    @if (roles.Result.Contains("moderator"))
                     {
-                        <tr>
-                            <td class="desc-table-title">
-                                <a class="button-delete" style="margin-top:15px;" asp-controller="Roles" asp-action="RemoveModerator" asp-route-id="@Model.user.Id">@Localizer["RemoveRole"]</a>
-                            </td>
-                        </tr>
+                        @Localizer["RemoveRole"]
                     }
                     else
                     {
-                        <tr>
-                            <td class="desc-table-title">
-                                <a class="action-link-default" style="margin-top:15px;" asp-controller="Roles" asp-action="SetModerator" asp-route-id="@Model.user.Id">@Localizer["AddRole"]</a>
-                            </td>
-                        </tr>
+                        @Localizer["AddRole"]
                     }
-
-
-
-                }
-            }
+                </a>
+            </div>
+        }
+        <div class="col-md-4">
             @if (!Model.isMe && User.IsInRole("admin"))
             {
-                <tr>
-                    <td class="desc-table-title">
-                        <a class="button-delete" style="margin-top:15px;" asp-controller="Account" asp-action="DeleteUser" asp-route-id="@Model.user.Id">@Localizer["Delete"]</a>
-                    </td>
-                </tr>
+                <a class="btn btn-danger" asp-controller="Account" asp-action="DeleteUser" asp-route-id="@Model.user.Id">@Localizer["DeleteUser"]</a>
             }
-        </table>
+        </div>
     </div>
 
-    <div class="profile-tabs-panel">
-
-        <div class="profile-table-space">
-            <table cellspacing="0" cellpadding="4" id="collsTable">
-
-                @if (Model.user.Collections.Count > 0)
+    <div class="container m-md-7">
+        <div class="row">
+            @if (Model.user.Collections.Count > 0)
+            {
+                foreach (var coll in Model.user.Collections.OrderBy(l => l.Name))
                 {
-                    foreach (var coll in Model.user.Collections.OrderBy(l => l.Name))
-                    {
-                        <tr class="table-row">
-                            <td><obj-link class="object-link" obj=@coll></obj-link></td>
-                            <td>@coll.Name</td>
-                            <td>@coll.Theme</td>
-                        </tr>
-                    }
+                    <div class="col-md-3">
+                        <div class="card mb-3 box-shadow">
+                            <img class="card-img-top" src="@coll.Img" style="max-height:50%;max-width:50%" alt="Collection image">
+                            <div class="card-body">
+                                <p class="card-title">@coll.Name</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a type="button" class="btn btn-primary" asp-controller="Collection" asp-action="Details" asp-route-id="@coll.Id">View</a>
+                                    <small class="text-muted">@coll.Theme</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
-
-            </table>
+            }
         </div>
-
-
     </div>
 </div>

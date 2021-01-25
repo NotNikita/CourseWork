@@ -3,6 +3,7 @@ using Comics.Domain;
 using Comics.Services.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Comics.Services.Entity
@@ -31,6 +32,26 @@ namespace Comics.Services.Entity
         public void Update(Comic comic)
         {
             comicsRep.Update(comic);
+        }
+
+        public IEnumerable<Comic> GetAllComics()
+        {
+            return comicsRep.GetAll();
+        }
+
+        public IEnumerable<Comic> GetComicsByCollection(int? id)
+        {
+            return db.Comics.Where(com => com.CollectionId == id).ToList();
+        }
+
+        public Comic GetComicById(int? id)
+        {
+            return db.Comics.Where(com => com.Id == id).FirstOrDefault();
+        }
+
+        public Comic GetComicByName(string name)
+        {
+            return db.Comics.Where(com => com.Name == name).FirstOrDefault();
         }
     }
 }

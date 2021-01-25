@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Q712I6xxZPnWF26l3ICNcd7MlLuBSQErbIVl4HTX/u/PSKO2PJ3IHb5cvpgBgJEf8p+9cpSgLnEHMoHq7FVF4g==",
+  "dgSpecHash": "PONTWE9eu3beeLc+472p3yf1HxNFX390Znhlh4P/c6+fU4ZoBjNrKtQXlIAcuRiDZH70VWo6qKdGCRKH1kyCnQ==",
   "success": true,
   "projectFilePath": "D:\\UniverCity\\iTransition\\Comics\\Comics.Web\\Comics.Web.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Никита\\.nuget\\packages\\bootstrap\\4.6.0\\bootstrap.4.6.0.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\cloudinarydotnet\\1.14.0\\cloudinarydotnet.1.14.0.nupkg.sha512",
+    "C:\\Users\\Никита\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\mailkit\\2.10.1\\mailkit.2.10.1.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\markdig\\0.22.0\\markdig.0.22.0.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -95,6 +97,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
+    "C:\\Users\\Никита\\.nuget\\packages\\popper.js\\1.16.1\\popper.js.1.16.1.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\portable.bouncycastle\\1.8.8\\portable.bouncycastle.1.8.8.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

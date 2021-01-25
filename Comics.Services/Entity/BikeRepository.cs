@@ -3,6 +3,7 @@ using Comics.Domain;
 using Comics.Services.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Comics.Services.Entity
@@ -32,5 +33,26 @@ namespace Comics.Services.Entity
         {
             bikesRep.Update(bike);
         }
+
+        public IEnumerable<Bike> GetAllBikes()
+        {
+            return bikesRep.GetAll();
+        }
+
+        public Bike GetBikeById(int? id)
+        {
+            return db.Bikes.Where(com => com.Id == id).FirstOrDefault();
+        }
+
+        public Bike GetBikeByName(string name)
+        {
+            return db.Bikes.Where(com => com.Name == name).FirstOrDefault();
+        }
+
+        public IEnumerable<Bike> GetBikesByCollection(int? id)
+        {
+            return db.Bikes.Where(com => com.CollectionId == id).ToList();
+        }
+
     }
 }

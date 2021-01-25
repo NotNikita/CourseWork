@@ -126,8 +126,14 @@
   <data name="Delete" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="DeleteUser" xml:space="preserve">
+    <value>Удалить пользователя</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Изменить</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Почта</value>
   </data>
   <data name="Moderator" xml:space="preserve">
     <value>Модератор</value>

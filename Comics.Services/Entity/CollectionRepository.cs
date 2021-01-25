@@ -13,6 +13,7 @@ namespace Comics.Services.Entity
     {
         private ComicsDbContext db;
         private ICollRepository<Collection> collRepository;
+        
         public CollectionRepository(ComicsDbContext _context, ICollRepository<Collection> _collRepository)
         {
             db = _context;
@@ -22,7 +23,6 @@ namespace Comics.Services.Entity
         public IEnumerable<Collection> GetAllCollections()
         {
             return collRepository.GetAll();
-            //return db.Collections.ToList();
         }
         public IEnumerable<Collection> MyCollections(User user)
         {
@@ -30,7 +30,7 @@ namespace Comics.Services.Entity
         }
         public Collection GetCollectionById(int? id)
         {
-            return db.Collections.Where(x => x.Id == id).FirstOrDefault();
+            return db.Collections.FirstOrDefault(coll => coll.Id == id);
         }
 
         public void AddCollectionDB(Collection coll)

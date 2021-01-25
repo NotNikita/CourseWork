@@ -5,13 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Components\" />
-    <Folder Include="Logs\" />
-    <Folder Include="DataBase\" />
-    <Folder Include="Resources\Views\Collection\" />
+    <Content Remove="C:\Users\Никита\.nuget\packages\bootstrap\4.6.0\contentFiles\any\any\wwwroot\js\bootstrap.bundle.js" />
+    <Content Remove="C:\Users\Никита\.nuget\packages\bootstrap\4.6.0\contentFiles\any\any\wwwroot\js\bootstrap.bundle.js.map" />
+    <Content Remove="C:\Users\Никита\.nuget\packages\bootstrap\4.6.0\contentFiles\any\any\wwwroot\js\bootstrap.bundle.min.js" />
+    <Content Remove="C:\Users\Никита\.nuget\packages\bootstrap\4.6.0\contentFiles\any\any\wwwroot\js\bootstrap.bundle.min.js.map" />
+    <Content Remove="C:\Users\Никита\.nuget\packages\bootstrap\4.6.0\contentFiles\any\any\wwwroot\js\bootstrap.js" />
+    <Content Remove="C:\Users\Никита\.nuget\packages\bootstrap\4.6.0\contentFiles\any\any\wwwroot\js\bootstrap.js.map" />
+    <Content Remove="C:\Users\Никита\.nuget\packages\bootstrap\4.6.0\contentFiles\any\any\wwwroot\js\bootstrap.min.js" />
+    <Content Remove="C:\Users\Никита\.nuget\packages\bootstrap\4.6.0\contentFiles\any\any\wwwroot\js\bootstrap.min.js.map" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Components\" />
+    <Folder Include="Logs\" />
+    <Folder Include="DataBase\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10">
       <PrivateAssets>all</PrivateAssets>

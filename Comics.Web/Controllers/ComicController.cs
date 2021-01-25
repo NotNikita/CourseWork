@@ -2,17 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Comics.DAL;
+using Comics.Domain;
+using Comics.Services;
+using Comics.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Comics.Web.Controllers
 {
+    [Authorize]
     public class ComicController : Controller
     {
-        // GET: ComicController
-        public ActionResult Index()
+        private readonly ComicsDbContext _context;
+        private UserManager<User> _userManager;
+        private ComicsDbContext _db;
+        private IWebHostEnvironment _appEnviroment;
+        private IComicRepository _collectionRepository;
+        private IUserRepository _userRepository;
+        private ImageManagment _imageManagment;
+
+        public ComicController(ComicsDbContext context, UserManager<User> userManager, ComicsDbContext db, IWebHostEnvironment appEnviroment, IComicRepository collectionRepository, IUserRepository userRepository, ImageManagment imageManagment)
         {
-            return View();
+            _context = context;
+            _userManager = userManager;
+            _db = db;
+            _appEnviroment = appEnviroment;
+            _collectionRepository = collectionRepository;
+            _userRepository = userRepository;
+            _imageManagment = imageManagment;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Index()
+        {
+            return View(await _context.Comics.ToListAsync());
         }
 
         // GET: ComicController/Details/5

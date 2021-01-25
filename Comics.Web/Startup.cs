@@ -37,6 +37,9 @@ namespace Comics.Web
             services.AddScoped(typeof(ICollRepository<>), typeof(CollRepository<>));
             services.AddTransient<ICollectionRepository, CollectionRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IComicRepository, ComicRepository>();
+            services.AddTransient<IBikeRepository, BikeRepository>();
+            services.AddTransient<IWhiskyRepository, WhiskyRepository>();
             services.AddScoped<IEmail, Email>();
             services.AddSingleton<ImageManagment>();
 
@@ -103,6 +106,7 @@ namespace Comics.Web
                     name: "default",
                     pattern: "{controller=Collection}/{action=Index}/{id?}");
                 endpoints.MapControllers();
+                endpoints.MapRazorPages();
             });
         }
     }

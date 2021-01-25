@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "tagify@3.22.1",
+      "destination": "wwwroot/tagify/"
+    },
+    {
+      "library": "jquery-ajax-unobtrusive@3.2.6",
+      "destination": "wwwroot/lib/jquery-ajax-unobtrusive/"
+    },
+    {
+      "library": "popper.js@2.6.0",
+      "destination": "wwwroot/js/popper.js/"
+    },
+    {
+      "library": "jquery@3.5.1",
+      "destination": "wwwroot/js/jquery/jquery/"
+    },
+    {
+      "library": "font-awesome@5.15.2",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "jquery-cookie@1.4.1",
+      "destination": "wwwroot/lib/jquery-cookie/",
+      "files": [
+        "jquery.cookie.js"
+      ]
+    }
+  ]
+}

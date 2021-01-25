@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Http;
 using Comics.Web.Models;
 
 namespace Comics.Web.Controllers
@@ -23,10 +25,22 @@ namespace Comics.Web.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult SetLanguage(string culture)
         {
-            return View();
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions
+                {
+                    Expires = DateTimeOffset.UtcNow.AddYears(1),
+                    IsEssential = true
+
+                }
+            );
+            return RedirectToAction("Index", "Collection");
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -60,7 +60,7 @@ namespace Comics.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(); //new Collection()
+            return View();
         }
 
         [HttpPost]
@@ -125,9 +125,12 @@ namespace Comics.Web.Controllers
                 try
                 {
                     var collectionFromDb = _collectionRepository.GetCollectionById(collection.Id);
-                    collection.UserId = collectionFromDb.UserId;
-                    collection.User = collectionFromDb.User;
-                    _collectionRepository.UpdateCollection(collection);
+                    collectionFromDb.Img = collection.Img;
+                    collectionFromDb.Name = collection.Name;
+                    collectionFromDb.Description = collection.Description;
+                    collectionFromDb.Theme = collection.Theme;
+                    collectionFromDb.User = await _userManager.FindByIdAsync(collectionFromDb.UserId);
+                    _collectionRepository.UpdateCollection(collectionFromDb);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

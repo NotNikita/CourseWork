@@ -1,18 +1,85 @@
-﻿@model IEnumerable<User>
+﻿@using Comics.Domain
+@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<User>
 @inject IViewLocalizer Localizer
+@inject UserManager<User> _userManager
 
+
+@functions {
+    private async Task<string> GetUserRole(User user)
+    {
+        var roles = await _userManager.GetRolesAsync(user);
+        return roles.FirstOrDefault();
+    }
+}
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <h2 class="form-header">@Localizer["UsersList"]</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Localizer["Id"]
+            </th>
+            <th>
+                @Localizer["Role"]
+            </th>
+            <th>
+                @Localizer["User"]
+            </th>
+            <th>
+                @Localizer["Email"]
+            </th>
+            <th>
+                @Localizer["Registration"]
+            </th>
+            <th>
+                @Localizer["LockoutEnabled"]
+            </th>
+            <th></th>
 
-<table class="form-body" cellspacing="0">
-    <tr class="table-users-header"><th>@Localizer["User"]</th><th>@Localizer["Email"]</th><th>@Localizer["RegistrationDate"]</th></tr>
-    @foreach (var user in Model)
-    {
-        <tr class="table-users-row">
-
-            <td><obj-link class="object-link" obj="@user"></obj-link></td>
-            <td>@user.Email</td>
-            <td>@user.Registration</td>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @await GetUserRole(item);
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Registration)
+                </td>
+                <td>
+                    @if (item.LockoutEnabled)
+                    {
+                        <a>@Localizer["Blocked"]</a>
+                    }
+                    else
+                    {
+                        <a>@Localizer["Unblocked"]</a>
+                    }
+                </td>
+                <td>
+                    <a asp-action="UserProfile" asp-route-id="@item.Id">@Localizer["View"]</a>
+                    <a asp-action="Block" asp-route-id="@item.Id">@Localizer["Block"]</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">@Localizer["Delete"]</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
 </table>

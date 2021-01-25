@@ -1,4 +1,5 @@
 ﻿@model Comics.Domain.Collection
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Details";
@@ -11,14 +12,14 @@
 <div>
 
     <h4>@Html.DisplayFor(model => model.Theme)</h4>
-    <p style="text-align:right">Created by "Username with link to profile"</p>
+    <p style="text-align:right">Created by <a asp-controller="Account" asp-action="Profile" asp-route-id="@Model.UserId">@Model.User.UserName</a></p>
 
 
     <hr />
     <dl class="row">
         <dl class="col">
             <div class="col-sm-7">
-                <a class="font-weight-bold">Описание</a>
+                <a class="font-weight-bold">@Localizer["Description"]</a>
             </div>
             <div class="col-sm-7">
                 @Markdown.ParseHtmlString(Model.Description)
@@ -29,6 +30,7 @@
         </dd>
     </dl>
 
+    <h4>@Localizer["Items"]</h4>
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
@@ -42,8 +44,8 @@
                                 <p class="card-text">@Markdown.ParseHtmlString(item.Tags)</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">View</a>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</button>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">@Localizer["View"]</a>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">@Localizer["Edit"]</button>
                                     </div>
                                     <small class="text-muted">@item.Price $</small>
                                 </div>
@@ -57,6 +59,6 @@
 
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">@Localizer["Edit"]</a> |
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>

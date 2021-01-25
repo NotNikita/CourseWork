@@ -117,16 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Block" xml:space="preserve">
+    <value>Block</value>
+  </data>
+  <data name="Blocked" xml:space="preserve">
+    <value>Blocked</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="RegistrationDate" xml:space="preserve">
-    <value>Registration date</value>
+  <data name="Id" xml:space="preserve">
+    <value>id</value>
+  </data>
+  <data name="LockoutEnabled" xml:space="preserve">
+    <value>Lockout enabled</value>
+  </data>
+  <data name="Promote" xml:space="preserve">
+    <value>Promote</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Unblocked" xml:space="preserve">
+    <value>Unblocked</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>User</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Username</value>
+  </data>
   <data name="UsersList" xml:space="preserve">
     <value>Users List</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
   </data>
 </root>

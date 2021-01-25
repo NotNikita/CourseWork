@@ -98,8 +98,8 @@ namespace Comics.Web.Controllers
                 {
                     Email = model.Email,
                     UserName = model.Name,
+                    LockoutEnabled = false,
                     Registration = DateTime.Now.ToUniversalTime(),
-
                 };
 
                 var isEmailExist = await _userManager.FindByEmailAsync(model.Email);
@@ -169,8 +169,6 @@ namespace Comics.Web.Controllers
 
         }
 
-
-
         [AllowAnonymous]
         [HttpPost]
         public IActionResult ExternalLogin(string provider, string returnUrl)
@@ -181,7 +179,6 @@ namespace Comics.Web.Controllers
                 .ConfigureExternalAuthenticationProperties(provider, redirectUrl);
             return new ChallengeResult(provider, properties);
         }
-
 
         [AllowAnonymous]
         public async Task<IActionResult>
@@ -272,7 +269,6 @@ namespace Comics.Web.Controllers
         }
 
 
-
         [HttpGet]
         public async Task<IActionResult> Profile(string id)
         {
@@ -291,36 +287,11 @@ namespace Comics.Web.Controllers
             return View(obj);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ChangeProfileImage(ProfileViewModel model, IFormFile uploadedImage)
-        {
-            User userToChange = _userRep.GetUserDb(model.user.Id);
-            if (userToChange == null || uploadedImage == null)
-            {
-                return View("Profile", model);
-            }
-
-            User currentUser = await _userManager.GetUserAsync(HttpContext.User);
-            var roles = await _userManager.GetRolesAsync(currentUser);
-            if (currentUser == userToChange || roles.Any(r => r == "admin"))
-            {
-                var file = uploadedImage.OpenReadStream();
-                if (uploadedImage != null && uploadedImage.Length > 0)
-                {
-                    string image_url = await _imageManagment.UploadImageAsync(userToChange.UserName, uploadedImage.OpenReadStream());
-                    userToChange.Img = image_url;
-                }
-
-                await _userManager.UpdateAsync(userToChange);
-            }
-
-            return View("Profile", model);
-        }
 
         [HttpGet]
-        public async Task<IActionResult> ChangePassword()
+        public async Task<IActionResult> ChangePassword(string id)
         {
-            User user = await _userManager.GetUserAsync(HttpContext.User);
+            User user = await _userManager.FindByIdAsync(id);
             ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id };
             return View(model);
         }
@@ -338,7 +309,7 @@ namespace Comics.Web.Controllers
 
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Profile");
+                        return View("Profile", model.Id);
                     }
                     else
                     {
@@ -432,6 +403,61 @@ namespace Comics.Web.Controllers
             return View(model);
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> ChangeRole(string id)
+        {
+            User user = await _userManager.FindByIdAsync(id);
+            var user_roles = await _userManager.GetRolesAsync(user);
+            if (user_roles.Contains("admin"))
+                return RedirectToAction("Index", "Users");
+            
+                
+
+            if (!user_roles.Contains("moderator")) {
+                await _userManager.AddToRoleAsync(user, "moderator");
+                await _userManager.RemoveFromRoleAsync(user, "user");
+            } else
+            {
+                await _userManager.AddToRoleAsync(user, "user");
+                await _userManager.RemoveFromRoleAsync(user, "moderator");
+            }
+
+            return RedirectToAction("Index", "Users");
+        }
+
+        /*
+        [HttpPost]
+        public async Task<IActionResult> ChangeRole(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = await _userManager.FindByIdAsync(model.Id);
+                if (user != null)
+                {
+                    IdentityResult result =
+                    await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Profile");
+                    }
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Пользователь не найден");
+                }
+            }
+            return View(model);
+        }
+        */
     }
 
 

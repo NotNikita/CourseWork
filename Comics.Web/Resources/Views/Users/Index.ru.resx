@@ -117,16 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Block" xml:space="preserve">
+    <value>Блок</value>
+  </data>
+  <data name="Blocked" xml:space="preserve">
+    <value>Заблокирован</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Почта</value>
   </data>
-  <data name="RegistrationDate" xml:space="preserve">
-    <value>Дата регистрации</value>
+  <data name="Id" xml:space="preserve">
+    <value>id</value>
+  </data>
+  <data name="LockoutEnabled" xml:space="preserve">
+    <value>Блокировка?</value>
+  </data>
+  <data name="Promote" xml:space="preserve">
+    <value>Назначить</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+  <data name="Unblocked" xml:space="preserve">
+    <value>Без блока</value>
   </data>
   <data name="User" xml:space="preserve">
-    <value>Пользователь</value>
+    <value>Никнейм</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Никнейм</value>
   </data>
   <data name="UsersList" xml:space="preserve">
     <value>Список пользователей</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Профиль</value>
   </data>
 </root>
