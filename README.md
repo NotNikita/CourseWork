@@ -1,4 +1,4 @@
 #Dynasty Collection
 ## iTransition Cource Project
 
-#Описание...
+https://itransitiondynastycomics.azurewebsites.net
