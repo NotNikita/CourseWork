@@ -44,8 +44,8 @@
                                 <p class="card-text">@Markdown.ParseHtmlString(item.Tags)</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">@Localizer["View"]</a>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">@Localizer["Edit"]</button>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-controller="Comic" asp-action="Details" asp-route-id="@item.Id">@Localizer["View"]</a>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-controller="Comic" asp-action="Edit" asp-route-id="@item.Id">@Localizer["Edit"]</a>
                                     </div>
                                     <small class="text-muted">@item.Price $</small>
                                 </div>

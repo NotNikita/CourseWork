@@ -5,7 +5,6 @@
 namespace AspNetCore
 {
     #line hidden
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -14,55 +13,62 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
-using Comics.Web;
+using System;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 2 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
-using Comics.Domain;
+using Comics.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 3 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
-using Comics.Web.ViewModel;
+using Comics.Domain;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 4 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
-using Westwind.AspNetCore.Markdown;
+using Comics.Web.ViewModel;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 5 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
-using Microsoft.AspNetCore.Identity;
+using Westwind.AspNetCore.Markdown;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 6 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
-using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 7 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Localization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Mvc.Localization;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f8e93b8754d953a18176d0ddcb84f2cf168d044b", @"/Views/Collection/Delete.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7a69048c666ca296df19df5deb89b0961320e031", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"035048ab6ed1451b309340a0aa9283d8f22745f8", @"/Views/_ViewImports.cshtml")]
     public class Views_Collection_Delete : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Comics.Domain.Collection>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "hidden", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -165,9 +171,9 @@ WriteAttributeValue("", 442, Model.Img, 442, 10, false);
 #line hidden
 #nullable disable
             WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </dl>\r\n    \r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8e93b8754d953a18176d0ddcb84f2cf168d044b7784", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8e93b8754d953a18176d0ddcb84f2cf168d044b7930", async() => {
                 WriteLiteral("\r\n        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f8e93b8754d953a18176d0ddcb84f2cf168d044b8050", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f8e93b8754d953a18176d0ddcb84f2cf168d044b8196", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -190,7 +196,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n        <input type=\"submit\" value=\"Delete\" class=\"btn btn-danger\" /> |\r\n        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8e93b8754d953a18176d0ddcb84f2cf168d044b9831", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8e93b8754d953a18176d0ddcb84f2cf168d044b9977", async() => {
 #nullable restore
 #line 33 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Delete.cshtml"
                          Write(Localizer["BackToList"]);

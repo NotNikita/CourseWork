@@ -53,5 +53,10 @@ namespace Comics.Services.Entity
         {
             return db.Comics.Where(com => com.Name == name).FirstOrDefault();
         }
+
+        public IEnumerable<Comment> GetCommentsByComicId(int id)
+        {
+            return db.Comments.Where(comm => comm.ItemId == id).ToList();
+        }
     }
 }

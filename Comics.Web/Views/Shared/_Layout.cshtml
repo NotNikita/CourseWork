@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
+    <link rel="shortcut icon" href="/favicon.ico?v=2">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://leagueofcomicgeeks.com/assets/css/master.min.css?v=20201214">
+    <link rel="stylesheet" type="text/css" href="https://leagueofcomicgeeks.com/assets/css/common.min.css?v=20210117">
+    <link rel="stylesheet" type="text/css" href="~/lib/font-awesome/css/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://leagueofcomicgeeks.com/assets/css/comic.min.css?v=20201214">
+    <link rel="stylesheet" href="https://leagueofcomicgeeks.com/assets/css/summernote.min.css?v=20201018143" />
+    <link rel="stylesheet" href="https://leagueofcomicgeeks.com/assets/css/jquery-ui.min.css?v=20201018" />
+    <link rel="stylesheet" href="https://leagueofcomicgeeks.com/assets/css/dashboard.css?v=20201215" />
+
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 </head>
 <body>
@@ -40,8 +50,8 @@
                             </li>
                         }
 
-                        <li class="col-md-8" id="tagsInputDiv">
-                            <input class="form-control" name="input-custom-dropdown" type="text" id="tagsInput" placeholder="Теги"/>
+                        <li class="col-md-8" id="textInputDiv">
+                            <input class="form-control" name="input-custom-dropdown" type="text" id="fulltextSearch" placeholder="Search"/>
                         </li>
 
                     </ul>
@@ -85,19 +95,9 @@
         </div>
     </footer>
 
-    <script src="~/js/tagify/tagify.polyfills.min.js"></script>
-    <script src="~/js/tagify/tagify.min.js"></script>
-    <script src="~/js/SearchTags.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.cookie.js"></script>
+    
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

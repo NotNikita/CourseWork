@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Comics.DAL.Migrations
 {
     [DbContext(typeof(ComicsDbContext))]
-    [Migration("20210115094649_UserEntityEdited")]
-    partial class UserEntityEdited
+    [Migration("20210130123807_LikesAdded")]
+    partial class LikesAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,8 @@ namespace Comics.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CollectionId")
+                    b.Property<int>("CollectionId")
+                        .HasColumnName("CollectionId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
@@ -55,6 +56,7 @@ namespace Comics.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
+                        .HasColumnName("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("isInWishList")
@@ -66,7 +68,7 @@ namespace Comics.DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("BaseItem");
+                    b.ToTable("BaseItems");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("BaseItem");
                 });
@@ -134,6 +136,24 @@ namespace Comics.DAL.Migrations
                     b.HasIndex("ItemId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Comics.Domain.CrossRefModel.Like", b =>
+                {
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("ItemId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Like");
                 });
 
             modelBuilder.Entity("Comics.Domain.User", b =>
@@ -429,7 +449,9 @@ namespace Comics.DAL.Migrations
                 {
                     b.HasOne("Comics.Domain.Collection", null)
                         .WithMany("Items")
-                        .HasForeignKey("CollectionId");
+                        .HasForeignKey("CollectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Comics.Domain.User", "User")
                         .WithMany("WishList")
@@ -456,6 +478,21 @@ namespace Comics.DAL.Migrations
                     b.HasOne("Comics.Domain.BaseItem", "Item")
                         .WithMany("Comments")
                         .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Comics.Domain.CrossRefModel.Like", b =>
+                {
+                    b.HasOne("Comics.Domain.BaseItem", "Item")
+                        .WithMany("Likes")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Comics.Domain.User", "User")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

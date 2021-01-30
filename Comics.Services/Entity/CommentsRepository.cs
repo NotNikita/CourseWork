@@ -7,7 +7,7 @@ using Comics.DAL;
 using Comics.Services.Abstract;
 using Microsoft.EntityFrameworkCore;
 
-namespace Comics.Services.Realization
+namespace Comics.Services.Entity
 {
     public class CommentsRepository : ICommentsRepository
     {

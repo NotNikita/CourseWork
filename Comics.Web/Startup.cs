@@ -17,6 +17,7 @@ using Comics.Services.Abstract;
 using Comics.Services.Entity;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using Comics.Web.Hubs;
 
 namespace Comics.Web
 {
@@ -40,6 +41,7 @@ namespace Comics.Web
             services.AddTransient<IComicRepository, ComicRepository>();
             services.AddTransient<IBikeRepository, BikeRepository>();
             services.AddTransient<IWhiskyRepository, WhiskyRepository>();
+            services.AddTransient<ICommentsRepository, CommentsRepository>();
             services.AddScoped<IEmail, Email>();
             services.AddSingleton<ImageManagment>();
 
@@ -88,7 +90,7 @@ namespace Comics.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/Index", "?statusCode={0}");
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
@@ -105,6 +107,7 @@ namespace Comics.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Collection}/{action=Index}/{id?}");
+                endpoints.MapHub<UpdateHub>("/updates");
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });

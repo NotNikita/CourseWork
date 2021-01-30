@@ -16,5 +16,7 @@ namespace Comics.Services.Abstract
 
         public Comic GetComicById(int? id);
         public Comic GetComicByName(string? name);
+
+        public IEnumerable<Comment> GetCommentsByComicId(int id);
     }
 }

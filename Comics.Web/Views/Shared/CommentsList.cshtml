@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Comment>
+
+
+<div class="listing col-md-12" id="postsArea">
+    @{foreach (var lot in Model.Reverse())
+        {
+            @await Html.PartialAsync("Comments", lot)
+        }
+    }
+</div>

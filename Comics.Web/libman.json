@@ -28,6 +28,17 @@
       "files": [
         "jquery.cookie.js"
       ]
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+    },
+    {
+      "library": "aspnet-signalr@1.1.4",
+      "destination": "wwwroot/js/aspnet-signalr/",
+      "files": [
+        "signalr.min.js"
+      ]
     }
   ]
 }

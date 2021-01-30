@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Comics.Domain;
+using Comics.Domain.CrossRefModel;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 
@@ -19,6 +20,20 @@ namespace Comics.DAL
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            // BaseItem - User
+            builder.Entity<Like>()
+                .HasKey(like => new { like.ItemId, like.UserId });
+
+            builder.Entity<Like>()
+                .HasOne(lk => lk.Item)
+                .WithMany(lk => lk.Likes)
+                .HasForeignKey(lk => lk.ItemId);
+
+            builder.Entity<Like>()
+                .HasOne(mp => mp.User)
+                .WithMany(mp => mp.Likes)
+                .HasForeignKey(mp => mp.UserId);
+
             base.OnModelCreating(builder);
         }
     }

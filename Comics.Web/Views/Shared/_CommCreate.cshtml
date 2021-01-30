@@ -1,0 +1,34 @@
+﻿@model Comment
+@inject IViewLocalizer Localizer
+
+
+@{ int item = Model.ItemId; }
+<div class="row justify-content-center" lotId="@item">
+    <div class="col-8">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input id="comm" type="hidden" asp-for="ItemId" />
+        <div class="form-group">
+            <textarea asp-for="Text" class="form-control" id="TextArea"></textarea>
+            <span asp-validation-for="Text" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input id="btnComment" lotId="@item" type="submit" value="@Localizer["Writecomm"]" class="btn btn-outline-dark add-comm-button" />
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).on('click', '.add-comm-button', function () {
+        var pbId = event.target.getAttribute('lotId');
+        console.log(pbId);
+        var comment = $('#TextArea').val();
+        $('#TextArea').val("");
+        console.log(comment);
+        var commArea = $('#comments' + pbId);
+        comment = encodeURIComponent(comment);
+        if (comment != "")
+            $(commArea).load("/Lot/" + pbId + "/" + comment);//Lot
+    })
+
+</script>

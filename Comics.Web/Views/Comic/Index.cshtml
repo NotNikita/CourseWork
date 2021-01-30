@@ -1,55 +1,79 @@
 ﻿@model IEnumerable<Comic>
+@inject IViewLocalizer Localizer
+
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link href="~/css/index-cards.css" rel="stylesheet" />
+
+<h1>@Localizer["Comics"]</h1>
 
 <div class="album py-5 bg-light">
     <div class="container">
+
+        <div style="display:flex; flex-direction: row">
+            <p class="col-md-6" id="tagsInputDiv">
+                <input class="form-control" name="input-custom-dropdown" style="align-self:flex-start" type="text" id="tagsInput" placeholder="@Localizer["Tags"]" />
+            </p>
+            <p class="btn color2-bg comic-controller btn-gradient col-md-2" style="align-self:flex-end" href="@Url.Action("Create", "Comic")">@Localizer["Create"]</p>
+        </div>
+
         <div class="row">
             @foreach (var item in Model)
             {
                 <div class="col-md-4">
-                    <div class="card mb-4 box-shadow" name="ItemCard">
-                        <img class="card-img-top" src="@item.Img" height="650" alt="Collection image">
-                        <div class="card-body">
-                            <p class="card-title">@item.Name</p>
-                            <input  readonly name="ItemTagCardInput" id="@item.Id TagField" value="@item.Tags">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">View</a>
-                                    @if (User.IsInRole("admin") || User.IsInRole("moderator"))
-                                    {
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                                    }
+                    <div class="example-2 card" name="ItemCard">
+                        <div class="wrapper" style="background:url(@item.Img) center no-repeat;">
+                            <div class="header">
+                                <div class="date">
+                                    <span class="day">@item.Released.Value.Day</span>
+                                    <span class="month">@item.Released.Value.Month</span>
+                                    <span class="year">@item.Released.Value.Year</span>
                                 </div>
-                                <small class="text-muted">@item.Publisher</small>
+                                <ul class="menu-content">
+                                    <li><a href="#" class="fa fa-heart-o"><span>@(item.isInWishList?1:0)</span></a></li>
+                                    <li>
+                                        <a href="#" class="fa fa-comment-o">
+                                            <span>2</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="data">
+                                <div class="content">
+                                    <span class="author">@item.Publisher</span>
+                                    <h1 class="title"><a href="#">@item.Name</a></h1>
+                                    <input class="text" readonly name="ItemTagCardInput" id="@item.Id TagField" value="@item.Tags">
+                                    <a class="button" asp-action="Details" asp-route-id="@item.Id">@Localizer["Readmore"]</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             }
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <a href="@Url.Action( "Create", "Comic")">
-                        <img class="card-img-top" src="http://dancesportglobal.com/wp-content/uploads/2016/09/plus-icon-27951.png" alt="Collection image">
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
 
-@*
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-*@
+<script src="~/css/index-cards.css"></script>
+
+<script src="~/js/SearchTags.js"></script>
+
+<script src="~/js/tagify/tagify.polyfills.min.js"></script>
+<script src="~/js/tagify/tagify.min.js"></script>
+<script src="~/js/SearchTags.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.cookie.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>

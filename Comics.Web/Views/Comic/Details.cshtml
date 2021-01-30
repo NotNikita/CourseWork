@@ -1,0 +1,238 @@
+﻿@model Comic
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Comic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="main-container">
+    <div class="container">
+        <header id="content-header">
+            <section id="comic-header" class="content-header-section d-flex">
+                <div class="backdrop">
+                    <div class="cover" style="background-image: url(@Model.Img);"></div>
+                </div>
+                <div class="splitter"></div>
+                <div class="inner align-self-end">
+                    <div class="section-details">
+                        <div class="page-details">
+                            <div class='header-intro'>
+                                <a href="">
+                                    @Model.Publisher Comics
+                                </a> &nbsp;&nbsp;·&nbsp;&nbsp;
+                                Released <a href="" style='font-weight: normal;'>@Model.Released.Value.ToString("MM/dd/yyyy")</a>
+                            </div>
+                            <h1>
+                                @Model.Name<small> @Localizer["BrandNew"]</small>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+        <section id="content-toolbar" class="content-toolbar mb-5">
+            <div class="col-profile-max">
+                <div class="row align-items-center justify-content-between py-4">
+                    <div id="comic-statbar" class="col d-flex flex-row align-items-center">
+                        <div class="d-flex">
+                            <a class="btn color2-bg comic-controller btn-gradient ml-2" asp-action="AddToWishList" asp-route-id="@Model.Id">@Localizer["Wish List"]</a>
+                            <a class="btn color2-bg comic-controller btn-gradient ml-2" asp-action="Edit" asp-route-id="@Model.Id">@Localizer["Edit"]</a>
+                        </div>
+                    </div>
+                    <div class="col-auto ml-auto d-none d-md-flex">
+
+                        <div class="comic-my-controls d-flex">
+                            <div class="row no-gutters w-100 justify-content-end">
+                                <div class="col-3">
+                                    <div class="comic-controller">
+                                        @if (Model.isInWishList)
+                                        {
+                                            <span class="fas fa-heart"></span>
+
+                                        }
+                                        else
+                                        {
+                                            <span class="far fa-heart"></span>
+                                        }
+                                        <div class="label-icon">@Localizer["WantIt"]</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comic-details">
+
+            <div class="tab-content col-profile-max">
+                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="nav-overview-tab">
+                    <div class="cg-grid">
+
+                        <section id="summary">
+                            <div class="row listing-content">
+                                <div class="col-12 listing-description">
+                                    <p>	@Markdown.ParseHtmlString(Model.Description)</p>
+                                </div>
+                                <div class="col-12">
+
+                                    <div class="row details-addtl copy-small mt-3">
+                                        <div class="col-xxl-4 col-lg-6 col-6 mb-3 details-addtl-block">
+                                            <div class="name">
+                                                @Localizer["Format"]
+                                            </div>
+                                            <div class="value">
+                                                @Localizer["Comic"]
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-lg-6 col-6 mb-3 details-addtl-block">
+                                            <div class="name">
+                                                @Localizer["PageCount"]
+                                            </div>
+                                            <div class="value">
+                                                @Model.PageCount @Localizer["pages"]
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-lg-6 col-6 mb-3 details-addtl-block">
+                                            <div class="name">
+                                                @Localizer["Price"]
+                                            </div>
+                                            <div class="value">
+                                                @Model.Price
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-lg-12 col-6 mb-3 details-addtl-block">
+                                            <div class="name">
+                                                @Localizer["Tags"]
+                                            </div>
+                                            <div class="value">
+                                                @Model.Tags
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+
+                        <aside class="cg-grid-side">
+                            <div class="content-sidebar-wrapper overlap">
+                                <div class="comic-cover-view mx-auto">
+
+                                    <div class="cover-art">
+                                        <a href=@Model.Img class="cover-gallery" title=@Model.Name><img src=@Model.Img alt=@Model.Name></a>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col justify-content-center">
+                                        <div class="d-flex align-items-center justify-content-center text-center">
+                                            <div class="copy-medium mr-4">
+                                                <i class="fas fa-heart"></i>
+                                                <span class="ml-1">777@*Amount of likes here*@</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="separator"></div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+                <div class="tab-pane fade grid-form " id="my-details" role="tabpanel" aria-labelledby="nav-my-details-tab">
+                </div>
+            </div>
+        </section>
+
+        @if (User.Identity.IsAuthenticated && !User.IsInRole("guest"))
+        {
+            <div id="prepared" class="row justify-content-center">
+                <div class="container">
+                    <div class="col col-12" style="margin-top:15px;">
+                        <h4>@Localizer["Comments"]</h4>
+                        <hr />
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @await Html.PartialAsync("~/Views/Shared/_CommCreate.cshtml", new Comment() { ItemId = Model.Id })
+                    }
+                </div>
+            </div>
+
+            var commentsId = "comments" + @Model.Id;
+            <div class="row justify-content-center col-md-12" id="@commentsId">
+                @{ await Html.RenderPartialAsync("~/Views/Shared/CommentsList.cshtml", Model.Comments); }
+            </div>
+        }
+
+    </div>
+</div>
+
+
+<script src="~/js/signalr.min.js"></script>
+<script>
+    const updateHub = new signalR.HubConnectionBuilder()
+        .withUrl("/updates")
+        .build();
+
+    updateHub.on('UpdateTable', function (lot_id, user_id, user_name) {
+        var model_id = lot_id;
+        if (model_id == lot_id) {
+            var user_td = document.createElement('td');
+            var user_link = document.createElement('a');
+            user_link.classList.add('object-link');
+
+            var link_text = document.createTextNode(user_name);
+            user_link.appendChild(link_text);
+            user_link.href = "/Users/Profile/" + user_id;
+            user_td.appendChild(user_link);
+        }
+    })
+
+    updateHub.start().then(function () {
+        console.log("First");
+        updateHub.invoke('JoinGroup', @Model.Id);
+        console.log(@Model.Id);
+
+        console.log("Third");
+        $('#sendButton').click(function() {
+
+            updateHub.invoke('Send', lot_id, user_id, user_name, lot_id);
+
+        });
+        console.log("Fourth");
+    });
+
+</script>
+@section Scripts {
+    <script>(function () { var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true; uv.src = '//widget.uservoice.com/edoXvUiLvxUooiGFzaymDQ.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s) })()</script>
+    <script src="~/js/signalr.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script type="text/javascript" src="https://leagueofcomicgeeks.com/assets/js/underscore-min.js"></script>
+    <script type="text/javascript" src="https://leagueofcomicgeeks.com/assets/js/jquery-general.min.js?v=202012141"></script>
+    <script type="text/javascript" src="https://leagueofcomicgeeks.com/assets/js/jquery.lazyload.min.js?v=20201214"></script>
+    <script type="text/javascript" src="https://leagueofcomicgeeks.com/assets/js/jquery.colorbox.min.js"></script>
+    <script type="text/javascript" src="https://leagueofcomicgeeks.com/assets/js/jquery-summernote.min.js?v=20201214"></script>
+    <script src="https://leagueofcomicgeeks.com/assets/js/jquery-ui.min.js?v=20201018"></script>
+    <script type="text/javascript" src="https://leagueofcomicgeeks.com/assets/js/comic-list.min.js?v=20201214"></script>
+    <script type="text/javascript" src="https://leagueofcomicgeeks.com/assets/js/typeahead.min.js"></script>
+    <script type="text/javascript" src="https://leagueofcomicgeeks.com/assets/js/feed.min.js?v=20201214"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/jquery.tinysort.min.js"></script>
+
+}
