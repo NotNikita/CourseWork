@@ -1,0 +1,107 @@
+﻿@model Comic
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>@Localizer["Create"]</h1>
+
+<h4>@Localizer["Comic"]</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <input type="hidden" asp-for="CollectionId" name="coll_Id"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-md-5">
+                    <label class="control-label">@Localizer["Name"]</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label class="control-label">@Localizer["Publisher"]</label>
+                    <input asp-for="Publisher" class="form-control" />
+                    <span asp-validation-for="Publisher" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="control-label">@Localizer["Price"]</label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">@Localizer["PageCount"]</label>
+                    <input asp-for="PageCount" class="form-control" />
+                    <span asp-validation-for="PageCount" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label class="control-label">@Localizer["Format"]</label>
+                    <input asp-for="Format" class="form-control" />
+                    <span asp-validation-for="Format" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group col-md-10">
+                <label class="control-label">@Localizer["Tags"]</label>
+                <input asp-for="Tags" class="form-control" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Released" class="control-label">@Localizer["Released"]</label>
+                <input asp-for="Released" id="datepicker" type="text" class="form-control" placeholder="@DateTime.Now.ToString("MM/dd/yyyy")" value="@(new DateTime(2020, 1, 6))"/>
+                <span asp-validation-for="Released" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-7">
+                <label asp-for="Description" class="control-label">@Localizer["Description"]</label><br/>
+                <textarea asp-for="Description" id="summernote"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-input">
+                <label name="uploadedImage">@Localizer["Image"]</label><br />
+
+                <div style="display: flex;">
+                    <label class="input-file">
+                        <input type="file" name="uploadedImage" accept=".jpg,.png,.jpeg" />
+                    </label>
+                    <label id="path" style="margin-left: 5px;margin-top: 2px;"></label>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div>
+        <a asp-action="Index">@Localizer["BackToList"]</a>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Post Something....',
+            tabsize: 2,
+            height: 300
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+}

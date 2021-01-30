@@ -34,27 +34,34 @@ using Comics.Domain;
 #nullable disable
 #nullable restore
 #line 4 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
-using Comics.Web.ViewModel;
+using Comics.Domain.CrossRefModel;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 5 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
+using Comics.Web.ViewModel;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
 using Westwind.AspNetCore.Markdown;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
+#line 8 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Localization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
+#line 9 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Mvc.Localization;
 
 #line default
@@ -68,7 +75,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b6b656c3be7f4d2e4110db9a0d84c520e0d5ec0d", @"/Views/Account/Profile.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"035048ab6ed1451b309340a0aa9283d8f22745f8", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6e6756a9a88f8a606c01d3bdbeeefd483b4ae16e", @"/Views/_ViewImports.cshtml")]
     public class Views_Account_Profile : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ProfileViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -262,7 +269,7 @@ WriteAttributeValue("", 690, Model.user.Img, 690, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral("                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6b656c3be7f4d2e4110db9a0d84c520e0d5ec0d12995", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6b656c3be7f4d2e4110db9a0d84c520e0d5ec0d13181", async() => {
 #nullable restore
 #line 51 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Account\Profile.cshtml"
                                                                                                  Write(Localizer["ChangePassword"]);
@@ -317,7 +324,7 @@ WriteAttributeValue("", 690, Model.user.Img, 690, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral("            <div class=\"col-md-4\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6b656c3be7f4d2e4110db9a0d84c520e0d5ec0d16017", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6b656c3be7f4d2e4110db9a0d84c520e0d5ec0d16203", async() => {
                 WriteLiteral("\r\n");
 #nullable restore
 #line 58 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Account\Profile.cshtml"
@@ -409,7 +416,7 @@ WriteAttributeValue("", 690, Model.user.Img, 690, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral("                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6b656c3be7f4d2e4110db9a0d84c520e0d5ec0d20055", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6b656c3be7f4d2e4110db9a0d84c520e0d5ec0d20241", async() => {
 #nullable restore
 #line 72 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Account\Profile.cshtml"
                                                                                                                     Write(Localizer["DeleteUser"]);
@@ -486,7 +493,7 @@ WriteAttributeValue("", 3125, coll.Img, 3125, 9, false);
 #line hidden
 #nullable disable
             WriteLiteral("</p>\r\n                                <div class=\"d-flex justify-content-between align-items-center\">\r\n                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6b656c3be7f4d2e4110db9a0d84c520e0d5ec0d24567", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6b656c3be7f4d2e4110db9a0d84c520e0d5ec0d24753", async() => {
                 WriteLiteral("View");
             }
             );

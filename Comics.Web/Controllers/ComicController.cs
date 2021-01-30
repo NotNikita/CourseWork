@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Comics.DAL;
 using Comics.Domain;
+using Comics.Domain.CrossRefModel;
 using Comics.Services;
 using Comics.Services.Abstract;
 using Comics.Web.Hubs;
@@ -59,7 +60,7 @@ namespace Comics.Web.Controllers
             var comic = _comicRepository.GetComicById(id);
 
             comic.User = _userRepository.GetUserDb(comic.UserId);
-            comic.Comments = _comicRepository.GetCommentsByComicId(comic.Id);
+            //comic.Comments = _comicRepository.GetCommentsByComicId(comic.Id);
 
             if (comic == null)
             {
@@ -69,25 +70,47 @@ namespace Comics.Web.Controllers
             return View("Details", comic);
         }
 
-        // GET: ComicController/Create
-        public ActionResult Create()
+        // GET: Comic/Create
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Create(int collectionId)
         {
-            return View();
+            User user = await _userManager.GetUserAsync(HttpContext.User);
+
+            var roles = await _userManager.GetRolesAsync(user);
+            if (roles.Any(r => r == "guest"))
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(new Comic() { CollectionId = collectionId }) ;
         }
 
-        // POST: ComicController/Create
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create([Bind("Name,Publisher,Price,Format,Tags,Released,PageCount,Description")] Comic comic, IFormFile uploadedImage, int coll_Id)
         {
-            try
+            if (ModelState.IsValid)
             {
+                if (uploadedImage != null && uploadedImage.Length > 0)
+                {
+                    string coll_url = await _imageManagment.UploadImageAsync(comic.Name, uploadedImage.OpenReadStream());
+                    comic.Img = coll_url;
+                }
+
+                User user = await _userManager.GetUserAsync(HttpContext.User);
+                comic.UserId = user.Id;
+                comic.User = user;
+                comic.Created = DateTime.Now;
+                comic.CollectionId = coll_Id;
+
+                //_comicRepository.AddComic(comic);
+                await _context.AddAsync(comic);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(comic);
         }
 
         [Route("Lot/{pbId?}/{comment}")]
@@ -117,46 +140,145 @@ namespace Comics.Web.Controllers
             return PartialView(lot.Comments);
         }
 
-        // GET: ComicController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Comic/Edit/5
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return RedirectPermanent("~/Error/Index?statusCode=404");
+            }
+
+            var comic = await _context.Comics.FindAsync(id);
+            if (comic == null)
+            {
+                return RedirectPermanent("~/Error/Index?statusCode=404");
+            }
+            return View(comic);
         }
 
-        // POST: ComicController/Edit/5
+        // POST: Comic/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Tags,Publisher,Img")] Comic comic, IFormFile uploadedImage)
+        {
+            if (id != comic.Id)
+            {
+                return NotFound();
+            }
+
+            if (uploadedImage != null && uploadedImage.Length > 0)
+            {
+                string coll_url = await _imageManagment.UploadImageAsync(comic.Name, uploadedImage.OpenReadStream());
+                comic.Img = coll_url;
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                try
+                {
+                    var comicFromDb = _comicRepository.GetComicById(comic.Id);
+                    comicFromDb.Img = comic.Img;
+                    comicFromDb.Name = comic.Name;
+                    comicFromDb.Publisher = comic.Publisher;
+                    comicFromDb.Description = comic.Description;
+                    comicFromDb.Tags = comic.Tags;
+                    comicFromDb.User = await _userManager.FindByIdAsync(comicFromDb.UserId);
+                    _comicRepository.Update(comicFromDb);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ComicExists(comic.Id))
+                    {
+                        return RedirectPermanent("~/Error/Index?statusCode=404");
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(comic);
+        }
+
+        // GET: Comic/AddToWishList/1
+        public async Task<IActionResult> AddToWishList(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var curr_user = await _userManager.GetUserAsync(HttpContext.User);
+                var like_db = _context.Likes.FirstOrDefault(x =>
+                x.ItemId == id && x.UserId == curr_user.Id);
+                if (like_db == null)
+                {
+                    var comic = await _db.Comics.FirstOrDefaultAsync(com => com.Id == id);
+                    var like = new Like()
+                    {
+                        ItemId = comic.Id,
+                        Item = comic,
+                        UserId = curr_user.Id,
+                        User = curr_user
+                    };
+                    comic.Likes.Add(like);
+                    _context.Add(like);
+                    _comicRepository.Update(comic);
+                    _db.Likes.Update(like);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    _db.Likes.Remove(like_db);
+                    await _context.SaveChangesAsync();
+                }
             }
-            catch
+            catch (NullReferenceException)
             {
-                return View();
+                //logger.LogError("Doesn't exist item. Controller:Comic. Action:AddToWishList");
+                return RedirectPermanent("~/Error/Index?statusCode=404");
             }
+            return RedirectToAction(nameof(Index));
         }
 
-        // GET: ComicController/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Comic/Delete/5
+        public async Task<IActionResult> DeleteAsync(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            User user = await _userManager.GetUserAsync(HttpContext.User);
+            var roles = await _userManager.GetRolesAsync(user);
+            if (roles.Any(r => r == "guest" || r == "user"))
+            {
+                return RedirectToAction("Index");
+            }
+
+            var collection = _comicRepository.GetComicById(id);
+            if (collection == null)
+            {
+                return NotFound();
+            }
+
+            return View(collection);
         }
 
-        // POST: ComicController/Delete/5
-        [HttpPost]
+
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var comic = _comicRepository.GetComicById(id);
+            _comicRepository.DeleteComic(comic);
+            _db.Likes.RemoveRange(comic.Likes);
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool ComicExists(int id)
+        {
+            return _context.Comics.Any(e => e.Id == id);
         }
     }
 }

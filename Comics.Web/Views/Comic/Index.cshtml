@@ -19,7 +19,6 @@
             <p class="col-md-6" id="tagsInputDiv">
                 <input class="form-control" name="input-custom-dropdown" style="align-self:flex-start" type="text" id="tagsInput" placeholder="@Localizer["Tags"]" />
             </p>
-            <p class="btn color2-bg comic-controller btn-gradient col-md-2" style="align-self:flex-end" href="@Url.Action("Create", "Comic")">@Localizer["Create"]</p>
         </div>
 
         <div class="row">
@@ -35,7 +34,7 @@
                                     <span class="year">@item.Released.Value.Year</span>
                                 </div>
                                 <ul class="menu-content">
-                                    <li><a href="#" class="fa fa-heart-o"><span>@(item.isInWishList?1:0)</span></a></li>
+                                    <li><a href="#" class="fa fa-heart-o"><span>@item.Likes.Count</span></a></li>
                                     <li>
                                         <a href="#" class="fa fa-comment-o">
                                             <span>2</span>

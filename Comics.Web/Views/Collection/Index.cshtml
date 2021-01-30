@@ -15,37 +15,39 @@
             <a href="#" class="btn btn-secondary my-2">@Localizer["MyColl"]</a>
         </p>
     </div>
-</section>
 
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4">
-                    <div class="card mb-4 box-shadow" style="height:800px;">
-                        <img class="card-img-top" src="@item.Img" style="width:auto;height:600px;" alt="Collection image">
-                        <div class="card-body">
-                            <p class="card-title">@item.Name</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">@Localizer["View"]</a>
-                                    <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">@Localizer["Edit"]</a>
-                                    @if (User.IsInRole("admin") || User.IsInRole("moderator"))
-                                    {
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Delete" asp-route-id="@item.Id">@Localizer["Delete"]</a>
-                                    }
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow" style="height:800px;">
+                            <img class="card-img-top" src="@item.Img" style="width:auto;height:600px;" alt="Collection image">
+                            <div class="card-body">
+                                <p class="card-title">@item.Name</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">@Localizer["View"]</a>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">@Localizer["Edit"]</a>
+                                        @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+                                        {
+                                            <a type="button" class="btn btn-sm btn-outline-secondary" asp-action="Delete" asp-route-id="@item.Id">@Localizer["Delete"]</a>
+                                        }
+                                    </div>
+                                    <small class="text-muted">@item.Theme</small>
                                 </div>
-                                <small class="text-muted">@item.Theme</small>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
 
+            </div>
         </div>
     </div>
-</div>
+</section>
+
+
 
 
 

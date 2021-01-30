@@ -38,8 +38,13 @@
                 <div class="row align-items-center justify-content-between py-4">
                     <div id="comic-statbar" class="col d-flex flex-row align-items-center">
                         <div class="d-flex">
-                            <a class="btn color2-bg comic-controller btn-gradient ml-2" asp-action="AddToWishList" asp-route-id="@Model.Id">@Localizer["Wish List"]</a>
-                            <a class="btn color2-bg comic-controller btn-gradient ml-2" asp-action="Edit" asp-route-id="@Model.Id">@Localizer["Edit"]</a>
+                            <a asp-action="AddToWishList" asp-route-id="@Model.Id" class="btn color2-bg btn-gradient ml-2">@Localizer["Wish List"]</a>
+                            @if (User.IsInRole("admin") || User.IsInRole("moderator") || User.Identity.Name == Model.User.UserName)
+                            {
+                                <a class="btn color2-bg btn-gradient ml-2" asp-action="Edit" asp-route-id="@Model.Id">@Localizer["Edit"]</a>
+                                <a class="btn color2-bg btn-gradient ml-2" asp-action="Delete" asp-route-id="@Model.Id">@Localizer["Delete"]</a>
+                            }
+
                         </div>
                     </div>
                     <div class="col-auto ml-auto d-none d-md-flex">
@@ -48,14 +53,17 @@
                             <div class="row no-gutters w-100 justify-content-end">
                                 <div class="col-3">
                                     <div class="comic-controller">
-                                        @if (Model.isInWishList)
+                                        @if (Model.Likes.Any(like => like.ItemId == Model.Id && like.User.UserName == User.Identity.Name))
                                         {
-                                            <span class="fas fa-heart"></span>
+
+                                            <span class="fas fa-heart" style="color: #f72e0f"></span>
 
                                         }
                                         else
                                         {
+
                                             <span class="far fa-heart"></span>
+
                                         }
                                         <div class="label-icon">@Localizer["WantIt"]</div>
                                     </div>
@@ -139,7 +147,14 @@
                                         <div class="d-flex align-items-center justify-content-center text-center">
                                             <div class="copy-medium mr-4">
                                                 <i class="fas fa-heart"></i>
-                                                <span class="ml-1">777@*Amount of likes here*@</span>
+                                                @if (Model.Likes.Count != 0)
+                                                {
+                                                    <span class="ml-1">@Model.Likes.Count</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="ml-1">zero</span>
+                                                }
                                             </div>
                                         </div>
 
@@ -215,6 +230,7 @@
         });
         console.log("Fourth");
     });
+    }
 
 </script>
 @section Scripts {
@@ -234,5 +250,5 @@
     <script type="text/javascript" src="https://leagueofcomicgeeks.com/assets/js/feed.min.js?v=20201214"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/jquery.tinysort.min.js"></script>
-
 }
+s

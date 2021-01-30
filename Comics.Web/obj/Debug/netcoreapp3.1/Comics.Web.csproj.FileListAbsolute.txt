@@ -240,5 +240,6 @@ D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\
 D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Comments.cshtml.g.cs
 D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\CommentsList.cshtml.g.cs
 D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Error\Index.cshtml.g.cs
-D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\en\Comics.Web.resources.cs
-D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\ru\Comics.Web.resources.cs
+D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Comic\Edit.cshtml.g.cs
+D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Comic\Delete.cshtml.g.cs
+D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Comic\Create.cshtml.g.cs

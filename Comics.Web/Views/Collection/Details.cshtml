@@ -10,8 +10,11 @@
 <h1>@Html.DisplayFor(model => model.Name)</h1>
 
 <div>
+    <div>
+        <h4>@Html.DisplayFor(model => model.Theme)</h4>
+        <a class="btn color2-bg btn-gradient col-md-2" style="align-self:flex-end" asp-controller="Comic" asp-action="Create" asp-route-collectionId="@Model.Id">@Localizer["Create"]</a>
+    </div>
 
-    <h4>@Html.DisplayFor(model => model.Theme)</h4>
     <p style="text-align:right">Created by <a asp-controller="Account" asp-action="Profile" asp-route-id="@Model.UserId">@Model.User.UserName</a></p>
 
 
@@ -36,8 +39,8 @@
             <div class="row">
                 @foreach (var item in Model.Items)
                 {
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                    <div class="col-md-3">
+                        <div class="card mb-3 box-shadow">
                             <img class="card-img-top" src="@item.Img" width="300" height="400" alt="Collection image">
                             <div class="card-body">
                                 <p class="card-title">@item.Name</p>
@@ -57,8 +60,9 @@
         </div>
     </div>
 
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">@Localizer["Edit"]</a> |
+        <a asp-action="Index">@Localizer["BackToList"]</a>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">@Localizer["Edit"]</a> |
-    <a asp-action="Index">@Localizer["BackToList"]</a>
-</div>
+

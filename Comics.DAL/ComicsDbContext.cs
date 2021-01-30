@@ -17,12 +17,13 @@ namespace Comics.DAL
         public DbSet<Whisky> Whiskies { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Collection> Collections { get; set; }
+        public DbSet<Like> Likes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             // BaseItem - User
             builder.Entity<Like>()
-                .HasKey(like => new { like.ItemId, like.UserId });
+                .HasKey(like => new { like.Id });
 
             builder.Entity<Like>()
                 .HasOne(lk => lk.Item)

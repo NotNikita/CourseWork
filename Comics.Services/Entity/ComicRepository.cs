@@ -1,6 +1,7 @@
 ﻿using Comics.DAL;
 using Comics.Domain;
 using Comics.Services.Abstract;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +47,10 @@ namespace Comics.Services.Entity
 
         public Comic GetComicById(int? id)
         {
-            return db.Comics.Where(com => com.Id == id).FirstOrDefault();
+            return db.Comics.Include(c => c.Likes)
+                .Include(c => c.Comments)
+                .FirstOrDefault(c => c.Id == id);
+            //return db.Comics.Where(com => com.Id == id).FirstOrDefault();
         }
 
         public Comic GetComicByName(string name)

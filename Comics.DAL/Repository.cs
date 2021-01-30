@@ -37,7 +37,6 @@ namespace Comics.DAL
         {
             entities.Add(entity);
             db.SaveChanges();
-
         }
 
         void IRepository<T>.SaveChanges()

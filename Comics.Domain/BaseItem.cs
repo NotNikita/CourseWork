@@ -16,8 +16,6 @@ namespace Comics.Domain
         //[Required]
         public string Tags { get; set; }
 
-        public bool isInWishList { get; set; } = false;
-
         public IEnumerable<Comment> Comments { get; set; }
         public IList<Like> Likes { get; set; } = new List<Like>();
 
