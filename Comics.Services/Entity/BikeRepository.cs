@@ -1,6 +1,7 @@
 ﻿using Comics.DAL;
 using Comics.Domain;
 using Comics.Services.Abstract;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,12 +42,16 @@ namespace Comics.Services.Entity
 
         public Bike GetBikeById(int? id)
         {
-            return db.Bikes.Where(com => com.Id == id).FirstOrDefault();
+            return db.Bikes.Include(c => c.Likes)
+                .Include(c => c.Comments)
+                .FirstOrDefault(c => c.Id == id);
         }
 
         public Bike GetBikeByName(string name)
         {
-            return db.Bikes.Where(com => com.Name == name).FirstOrDefault();
+            return db.Bikes.Include(c => c.Likes)
+                .Include(c => c.Comments)
+                .FirstOrDefault(c => c.Name == name);
         }
 
         public IEnumerable<Bike> GetBikesByCollection(int? id)
@@ -54,5 +59,9 @@ namespace Comics.Services.Entity
             return db.Bikes.Where(com => com.CollectionId == id).ToList();
         }
 
+        public IEnumerable<Comment> GetCommentsByBikeId(int id)
+        {
+            return db.Comments.Where(comm => comm.ItemId == id).ToList();
+        }
     }
 }

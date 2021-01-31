@@ -50,7 +50,6 @@ namespace Comics.Services.Entity
             return db.Comics.Include(c => c.Likes)
                 .Include(c => c.Comments)
                 .FirstOrDefault(c => c.Id == id);
-            //return db.Comics.Where(com => com.Id == id).FirstOrDefault();
         }
 
         public Comic GetComicByName(string name)

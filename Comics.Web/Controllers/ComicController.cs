@@ -113,7 +113,7 @@ namespace Comics.Web.Controllers
             return View(comic);
         }
 
-        [Route("Lot/{pbId?}/{comment}")]
+        [Route("Comic/{pbId?}/{comment}")]
         public async Task<IActionResult> CreateComment(int pbId, string comment)
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
@@ -122,7 +122,9 @@ namespace Comics.Web.Controllers
                 ItemId = pbId,
                 Author = user,
                 Text = comment,
-                Item = _comicRepository.GetComicById(pbId)
+                Item = _comicRepository.GetComicById(pbId),
+                CreationDate = DateTime.Now,
+                ItemTheme = "Comic"
             };
 
             if (ModelState.IsValid)

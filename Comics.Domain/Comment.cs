@@ -15,5 +15,6 @@ namespace Comics.Domain
         public DateTime CreationDate { get; set; }
         public string Text { get; set; }
         public User Author { get; set; }
+        public string ItemTheme { get; set; }
     }
 }

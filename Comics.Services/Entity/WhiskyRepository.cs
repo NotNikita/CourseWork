@@ -1,6 +1,7 @@
 ﻿using Comics.DAL;
 using Comics.Domain;
 using Comics.Services.Abstract;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,12 +47,19 @@ namespace Comics.Services.Entity
 
         public Whisky GetWhiskyById(int? id)
         {
-            return db.Whiskies.Where(com => com.Id == id).FirstOrDefault();
+            return db.Whiskies.Include(c => c.Likes)
+                .Include(c => c.Comments)
+                .FirstOrDefault(c => c.Id == id);
         }
 
         public Whisky GetWhiskyByName(string name)
         {
             return db.Whiskies.Where(com => com.Name == name).FirstOrDefault();
+        }
+
+        public IEnumerable<Comment> GetCommentsByWhiskyId(int id)
+        {
+            return db.Comments.Where(comm => comm.ItemId == id).ToList();
         }
     }
 }

@@ -4,7 +4,6 @@
 @inject UserManager<User> UserManager
 @inject IViewLocalizer Localizer
 
-
 @{ var u = UserManager.Users.ToList();
     var commentsId = "comments" + Model.ItemId;
 }
@@ -16,10 +15,10 @@
 
             <div class="row justify-content-center">
 
-                    <div class="col col-7">
-                        <b><a asp-controller="Users" asp-action="UserProfile" asp-route-id="@Model.Author.Id">@Model.Author.UserName  @Model.CreationDate</a></b>
-                        <p>@Model.Text</p>
-                    </div>
+                <div class="col col-7">
+                    <b><a asp-controller="Users" asp-action="UserProfile" asp-route-id="@Model.Author.Id">@Model.Author.UserName  @Model.CreationDate</a></b>
+                    <p>@Model.Text</p>
+                </div>
                 <div class="col col-1">
 
 
@@ -28,7 +27,7 @@
                         if (Model.Item != null)
                         {
 
-                            <form asp-controller="Comic" asp-action="DeleteComment" asp-route-id="@Model.Id" method="POST" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#@commentsId" enctype="multipart/form-data">
+                            <form asp-controller="@Model.ItemTheme" asp-action="DeleteComment" asp-route-id="@Model.Id" method="POST" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#@commentsId" enctype="multipart/form-data">
                                 <button type="submit" class="close">&times;</button>
                             </form>
 

@@ -16,5 +16,7 @@ namespace Comics.Services.Abstract
 
         public Bike GetBikeById(int? id);
         public Bike GetBikeByName(string? name);
+
+        public IEnumerable<Comment> GetCommentsByBikeId(int id);
     }
 }

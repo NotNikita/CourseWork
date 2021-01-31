@@ -6,10 +6,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Delete</h1>
+<h1>@Localizer["Delete"]</h1>
 
 <h3>@Localizer["AreYouSure"]</h3>
-<div>
+<div class="container">
     <h4>@Html.DisplayFor(model => model.Name)</h4>
     <hr />
     <dl class="row">
@@ -26,10 +26,10 @@
             </div>
         </div>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="@Localizer["Delete"]" class="btn btn-danger" /> |
         <a asp-action="Index">@Localizer["BackToList"]</a>
     </form>
 </div>

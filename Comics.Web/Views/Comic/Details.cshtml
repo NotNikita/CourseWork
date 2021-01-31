@@ -182,7 +182,7 @@
                     </div>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        @await Html.PartialAsync("~/Views/Shared/_CommCreate.cshtml", new Comment() { ItemId = Model.Id })
+                        @await Html.PartialAsync("~/Views/Shared/_CommCreate.cshtml", new Comment() { ItemId = Model.Id, ItemTheme = "Comic" })
                     }
                 </div>
             </div>
@@ -218,17 +218,11 @@
     })
 
     updateHub.start().then(function () {
-        console.log("First");
         updateHub.invoke('JoinGroup', @Model.Id);
         console.log(@Model.Id);
-
-        console.log("Third");
         $('#sendButton').click(function() {
-
             updateHub.invoke('Send', lot_id, user_id, user_name, lot_id);
-
         });
-        console.log("Fourth");
     });
     }
 

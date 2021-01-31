@@ -16,5 +16,7 @@ namespace Comics.Services.Abstract
 
         public Whisky GetWhiskyById(int? id);
         public Whisky GetWhiskyByName(string? name);
+
+        public IEnumerable<Comment> GetCommentsByWhiskyId(int id);
     }
 }

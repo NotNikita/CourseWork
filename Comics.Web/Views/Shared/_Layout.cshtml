@@ -84,14 +84,16 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-5 mb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted mt-3">
         <div class="container">
+
             &copy; 2021 - Dynasty Comics
+
             @await Html.PartialAsync("_LanguageSelectorPartial")
         </div>
     </footer>

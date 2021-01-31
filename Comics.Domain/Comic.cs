@@ -8,7 +8,7 @@ namespace Comics.Domain
     public class Comic : BaseItem
     {
         [Column("Publisher")]
-        public string? Publisher { get; set; } //ushort
+        public string Publisher { get; set; }
 
         [Column("Description")]
         public string? Description { get; set; }

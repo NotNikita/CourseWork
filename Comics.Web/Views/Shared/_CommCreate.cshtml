@@ -28,7 +28,7 @@
         var commArea = $('#comments' + pbId);
         comment = encodeURIComponent(comment);
         if (comment != "")
-            $(commArea).load("/Lot/" + pbId + "/" + comment);//Lot
+            $(commArea).load('/' + "@Model.ItemTheme" + '/' + pbId + "/" + comment);
     })
 
 </script>

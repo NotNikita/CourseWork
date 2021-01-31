@@ -123,6 +123,9 @@
   <data name="BackToList" xml:space="preserve">
     <value>Назад к списку</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Описание</value>
   </data>
