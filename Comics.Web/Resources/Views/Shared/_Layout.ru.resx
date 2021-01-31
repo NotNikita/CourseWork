@@ -117,13 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Bikes" xml:space="preserve">
+    <value>Байки</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Коллекции</value>
+  </data>
   <data name="Comics" xml:space="preserve">
-    <value>Comics</value>
+    <value>Комиксы</value>
   </data>
-  <data name="Readmore" xml:space="preserve">
-    <value>Read more</value>
+  <data name="Hello" xml:space="preserve">
+    <value>Привет</value>
   </data>
-  <data name="Tags" xml:space="preserve">
-    <value>Tags</value>
+  <data name="Login" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="Whisky" xml:space="preserve">
+    <value>Виски</value>
   </data>
 </root>

@@ -117,13 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Comics" xml:space="preserve">
-    <value>Comics</value>
+  <data name="BrandNew" xml:space="preserve">
+    <value>Свежее поступление</value>
   </data>
-  <data name="Readmore" xml:space="preserve">
-    <value>Read more</value>
+  <data name="Comic" xml:space="preserve">
+    <value>Комикс</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Комментарии</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Формат</value>
+  </data>
+  <data name="PageCount" xml:space="preserve">
+    <value>Страницы</value>
+  </data>
+  <data name="pages" xml:space="preserve">
+    <value>страниц</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Цена обложки</value>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>Издатель</value>
   </data>
   <data name="Tags" xml:space="preserve">
-    <value>Tags</value>
+    <value>Тэги</value>
+  </data>
+  <data name="WantIt" xml:space="preserve">
+    <value>Хочу!</value>
   </data>
 </root>

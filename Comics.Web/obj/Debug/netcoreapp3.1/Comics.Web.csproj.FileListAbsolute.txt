@@ -243,3 +243,4 @@ D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\
 D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Comic\Edit.cshtml.g.cs
 D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Comic\Delete.cshtml.g.cs
 D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Comic\Create.cshtml.g.cs
+D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Comics.Web.Resources.Views.Comic.Edit.en.resources
