@@ -26,11 +26,9 @@
                     {
                         if (Model.Item != null)
                         {
-
                             <form asp-controller="@Model.ItemTheme" asp-action="DeleteComment" asp-route-id="@Model.Id" method="POST" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#@commentsId" enctype="multipart/form-data">
                                 <button type="submit" class="close">&times;</button>
                             </form>
-
                         }
                     }
                 </div>

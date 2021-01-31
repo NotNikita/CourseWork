@@ -117,31 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BackToList" xml:space="preserve">
-    <value>Назад к списку</value>
+  <data name="Bike" xml:space="preserve">
+    <value>Bike</value>
   </data>
-  <data name="Comic" xml:space="preserve">
-    <value>Комикс</value>
+  <data name="BikeType" xml:space="preserve">
+    <value>Bike type</value>
+  </data>
+  <data name="BrandNew" xml:space="preserve">
+    <value>Brand new bike!</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Описание</value>
+    <value>Description</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Изменить</value>
+    <value>Edit</value>
   </data>
-  <data name="Image" xml:space="preserve">
-    <value>Картинка</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Название</value>
-  </data>
-  <data name="Publisher" xml:space="preserve">
-    <value>Издатель</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Сохранить</value>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
   </data>
   <data name="Tags" xml:space="preserve">
-    <value>Тэги</value>
+    <value>Tags</value>
+  </data>
+  <data name="WantIt" xml:space="preserve">
+    <value>Want it!</value>
+  </data>
+  <data name="WheelDiameter" xml:space="preserve">
+    <value>Wheel diameter</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
   </data>
 </root>

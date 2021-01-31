@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Whisky>
+@inject IViewLocalizer Localizer
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link href="~/css/index-cards.css" rel="stylesheet" />
+
+<h1>@Localizer["Whisky"]</h1>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div style="display:flex; flex-direction: row">
+            <p class="col-md-6" id="tagsInputDiv">
+                <input class="form-control" name="input-custom-dropdown" style="align-self:flex-start" type="text" id="tagsInput" placeholder="@Localizer["Tags"]" />
+            </p>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="example-2 card" name="ItemCard">
+                        <div class="wrapper" style="background:url(@item.Img) center no-repeat;">
+                            <div class="header">
+                                <div class="date">
+                                    <span class="day">@item.Bottled.Value.Day</span>
+                                    <span class="month">@item.Bottled.Value.Month</span>
+                                    <span class="year">@item.Bottled.Value.Year</span>
+                                </div>
+                                <ul class="menu-content">
+                                    <li><a href="#" class="fa fa-heart-o"><span>@item.Likes.Count</span></a></li>
+                                    <li>
+                                        <a href="#" class="fa fa-comment-o">
+                                            <span>3</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="data">
+                                <div class="content">
+                                    <span class="author">@item.Brand</span>
+                                    <h1 class="title"><a href="#">@item.Name</a></h1>
+                                    <input class="text" readonly name="ItemTagCardInput" id="@item.Id TagField" value="@item.Tags">
+                                    <a class="button" asp-action="Details" asp-route-id="@item.Id">@Localizer["Readmore"]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<script src="~/css/index-cards.css"></script>
+
+<script src="~/js/SearchTags.js"></script>
+
+<script src="~/js/tagify/tagify.polyfills.min.js"></script>
+<script src="~/js/tagify/tagify.min.js"></script>
+<script src="~/js/SearchTags.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.cookie.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>

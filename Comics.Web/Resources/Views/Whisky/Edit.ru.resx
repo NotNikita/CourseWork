@@ -120,11 +120,11 @@
   <data name="BackToList" xml:space="preserve">
     <value>Назад к списку</value>
   </data>
-  <data name="Comic" xml:space="preserve">
-    <value>Комикс</value>
+  <data name="Bottled" xml:space="preserve">
+    <value>Разлит</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Описание</value>
+  <data name="Brand" xml:space="preserve">
+    <value>Бренд</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Изменить</value>
@@ -135,13 +135,28 @@
   <data name="Name" xml:space="preserve">
     <value>Название</value>
   </data>
-  <data name="Publisher" xml:space="preserve">
-    <value>Издатель</value>
+  <data name="Price" xml:space="preserve">
+    <value>Цена</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="Size" xml:space="preserve">
+    <value>Объем</value>
+  </data>
+  <data name="Strength" xml:space="preserve">
+    <value>Крепкость</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>Бренд</value>
+  </data>
   <data name="Tags" xml:space="preserve">
     <value>Тэги</value>
+  </data>
+  <data name="Vintage" xml:space="preserve">
+    <value>Винтаж</value>
+  </data>
+  <data name="Whisky" xml:space="preserve">
+    <value>Виски</value>
   </data>
 </root>

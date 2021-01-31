@@ -1,0 +1,103 @@
+﻿@model Whisky
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>@Localizer["Create"]</h1>
+<h4>@Localizer["Whisky"]</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <input type="hidden" asp-for="CollectionId" name="coll_Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-md-5">
+                    <label class="control-label">@Localizer["Name"]</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label class="control-label">@Localizer["Brand"]</label>
+                    <input asp-for="Brand" class="form-control" />
+                    <span asp-validation-for="Brand" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-2">
+                    <label class="control-label">@Localizer["Strength"] (% Vol.)</label>
+                    <input asp-for="Strength" class="form-control" />
+                    <span asp-validation-for="Strength" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">@Localizer["Size"] (ml.)</label>
+                    <input asp-for="Size" class="form-control" />
+                    <span asp-validation-for="Size" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">@Localizer["Price"] (€)</label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Vintage" class="control-label">@Localizer["Vintage"]</label>
+                    <input asp-for="Vintage" id="datepicker1" type="text" class="form-control" value="@(new DateTime(2010, 1, 6))" />
+                    <span asp-validation-for="Vintage" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Bottled" class="control-label">@Localizer["Bottled"]</label>
+                    <input asp-for="Bottled" id="datepicker2" type="text" class="form-control" value="@(new DateTime(2011, 2, 3))" />
+                    <span asp-validation-for="Bottled" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group col-md-10">
+                <label class="control-label">@Localizer["Tags"]</label>
+                <input asp-for="Tags" class="form-control" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
+            <div class="form-input">
+                <label name="uploadedImage">@Localizer["Image"]</label><br />
+
+                <div style="display: flex;">
+                    <label class="input-file">
+                        <input type="file" name="uploadedImage" accept=".jpg,.png,.jpeg" />
+                    </label>
+                    <label id="path" style="margin-left: 5px;margin-top: 2px;"></label>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div>
+        <a asp-action="Index">@Localizer["BackToList"]</a>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+            $("#datepicker1").datepicker();
+        });
+        $(function () {
+            $("#datepicker2").datepicker();
+        });
+    </script>
+}

@@ -260,3 +260,8 @@ D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\
 D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Bike\Details.cshtml.g.cs
 D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Bike\Edit.cshtml.g.cs
 D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Bike\Index.cshtml.g.cs
+D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Whisky\Create.cshtml.g.cs
+D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Whisky\Delete.cshtml.g.cs
+D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Whisky\Details.cshtml.g.cs
+D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Whisky\Edit.cshtml.g.cs
+D:\UniverCity\iTransition\Comics\Comics.Web\obj\Debug\netcoreapp3.1\Razor\Views\Whisky\Index.cshtml.g.cs

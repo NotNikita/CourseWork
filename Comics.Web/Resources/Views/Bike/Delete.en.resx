@@ -117,31 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BackToList" xml:space="preserve">
-    <value>Назад к списку</value>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Are you sure?</value>
   </data>
-  <data name="Comic" xml:space="preserve">
-    <value>Комикс</value>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Изменить</value>
-  </data>
-  <data name="Image" xml:space="preserve">
-    <value>Картинка</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Название</value>
-  </data>
-  <data name="Publisher" xml:space="preserve">
-    <value>Издатель</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="Tags" xml:space="preserve">
-    <value>Тэги</value>
+    <value>Description</value>
   </data>
 </root>

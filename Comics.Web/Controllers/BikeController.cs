@@ -132,6 +132,30 @@ namespace Comics.Web.Controllers
 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("Bike/Comment/Delete/{id?}")]
+        public async Task<IActionResult> DeleteComment(int id)
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var comm = await _db.Comments.FirstOrDefaultAsync(c => c.Id == id);
+            if (comm == null)
+            {
+                return RedirectPermanent("~/Error/Index?statusCode=404");
+            }
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            var lotId = comm.ItemId;
+            if (comm.Author != user && !roles.Any(r => r == "admin" || r == "moderator"))
+            {
+                return RedirectPermanent("~/Error/Index?statusCode=404");
+            }
+            _commentRepository.RemoveComm(comm);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("CommentsList", new { id = lotId });
+        }
+
         public PartialViewResult CommentsList(int id)
         {
             Bike lot = _bikeRepository.GetBikeById(id);

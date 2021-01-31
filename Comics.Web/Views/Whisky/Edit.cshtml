@@ -1,4 +1,4 @@
-﻿@model Bike
+﻿@model Whisky
 @inject IViewLocalizer Localizer
 
 @{
@@ -8,8 +8,7 @@
 
 
 <h1>@Localizer["Edit"]</h1>
-
-<h4>@Localizer["Bike"]</h4>
+<h4>@Localizer["Whisky"]</h4>
 <hr />
 <div class="row">
     <div class="col-md-12">
@@ -26,49 +25,44 @@
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-5">
-                    <label class="control-label">@Localizer["Producer"]</label>
-                    <input asp-for="Producer" class="form-control" />
-                    <span asp-validation-for="Producer" class="text-danger"></span>
+                    <label class="control-label">@Localizer["Brand"]</label>
+                    <input asp-for="Brand" class="form-control" />
+                    <span asp-validation-for="Brand" class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-2">
-                    <label class="control-label">@Localizer["Price"]</label>
+                    <label class="control-label">@Localizer["Strength"] (% Vol.)</label>
+                    <input asp-for="Strength" class="form-control" />
+                    <span asp-validation-for="Strength" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">@Localizer["Size"] (ml.)</label>
+                    <input asp-for="Size" class="form-control" />
+                    <span asp-validation-for="Size" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">@Localizer["Price"] (€)</label>
                     <input asp-for="Price" class="form-control" />
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
-                <div class="form-group col-md-3">
-                    <label class="control-label">@Localizer["Color"]</label>
-                    <input asp-for="Color" class="form-control" />
-                    <span asp-validation-for="Color" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-2">
-                    <label class="control-label">@Localizer["Year"]</label>
-                    <input asp-for="Year" class="form-control" />
-                    <span asp-validation-for="Year" class="text-danger"></span>
-                </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-4">
-                    <label class="control-label">@Localizer["BikeType"]</label>
-                    <input asp-for="BikeType" class="form-control" />
-                    <span asp-validation-for="BikeType" class="text-danger"></span>
+                <div class="form-group col-md-3">
+                    <label asp-for="Vintage" class="control-label">@Localizer["Vintage"]</label>
+                    <input asp-for="Vintage" id="datepicker1" type="text" class="form-control" value="@(new DateTime(2010, 5, 6))" />
+                    <span asp-validation-for="Vintage" class="text-danger"></span>
                 </div>
-                <div class="form-group col-md-2">
-                    <label class="control-label">@Localizer["WheelDiameter"]</label>
-                    <input asp-for="WheelDiameter" class="form-control" />
-                    <span asp-validation-for="WheelDiameter" class="text-danger"></span>
+                <div class="form-group col-md-3">
+                    <label asp-for="Bottled" class="control-label">@Localizer["Bottled"]</label>
+                    <input asp-for="Bottled" id="datepicker2" type="text" class="form-control" value="@(new DateTime(2011, 6, 22))" />
+                    <span asp-validation-for="Bottled" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group col-md-10">
                 <label class="control-label">@Localizer["Tags"]</label>
                 <input asp-for="Tags" class="form-control" />
                 <span asp-validation-for="Tags" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label">@Localizer["Description"]</label>
-                <textarea hidden="hidden" asp-for="Description" id="summernote"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label name="uploadedImage">@Localizer["Image"]</label><br />
@@ -101,10 +95,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 
     <script>
-        $('#summernote').summernote({
-            placeholder: 'Post Something....',
-            tabsize: 2,
-            height: 300
+        $(function () {
+            $("#datepicker1").datepicker();
+        });
+        $(function () {
+            $("#datepicker2").datepicker();
         });
     </script>
 }

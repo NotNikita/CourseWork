@@ -118,30 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BackToList" xml:space="preserve">
-    <value>Назад к списку</value>
+    <value>Back to List</value>
   </data>
-  <data name="Comic" xml:space="preserve">
-    <value>Комикс</value>
+  <data name="Bike" xml:space="preserve">
+    <value>Bike</value>
+  </data>
+  <data name="BikeType" xml:space="preserve">
+    <value>Bike type</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Изменить</value>
+    <value>Description</value>
   </data>
   <data name="Image" xml:space="preserve">
-    <value>Картинка</value>
+    <value>Image</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Название</value>
+    <value>Name</value>
   </data>
-  <data name="Publisher" xml:space="preserve">
-    <value>Издатель</value>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Producer" xml:space="preserve">
+    <value>Producer</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Сохранить</value>
+    <value>Save</value>
   </data>
   <data name="Tags" xml:space="preserve">
-    <value>Тэги</value>
+    <value>Tags</value>
+  </data>
+  <data name="WheelDiameter" xml:space="preserve">
+    <value>Wheel diameter</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
   </data>
 </root>

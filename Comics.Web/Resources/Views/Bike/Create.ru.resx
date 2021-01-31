@@ -120,14 +120,20 @@
   <data name="BackToList" xml:space="preserve">
     <value>Назад к списку</value>
   </data>
-  <data name="Comic" xml:space="preserve">
-    <value>Комикс</value>
+  <data name="Bike" xml:space="preserve">
+    <value>Байк</value>
+  </data>
+  <data name="BikeType" xml:space="preserve">
+    <value>Тип байка</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Создать</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Описание</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Изменить</value>
   </data>
   <data name="Image" xml:space="preserve">
     <value>Картинка</value>
@@ -135,13 +141,22 @@
   <data name="Name" xml:space="preserve">
     <value>Название</value>
   </data>
-  <data name="Publisher" xml:space="preserve">
-    <value>Издатель</value>
+  <data name="Price" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="Producer" xml:space="preserve">
+    <value>Производитель</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Тэги</value>
+  </data>
+  <data name="WheelDiameter" xml:space="preserve">
+    <value>Размер колеса</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Год</value>
   </data>
 </root>
