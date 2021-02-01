@@ -74,8 +74,15 @@ using Microsoft.AspNetCore.Mvc.Localization;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
+using Comics.DAL;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f4567321fb4350c99382923bf6bef9e5ed35143d", @"/Views/Bike/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6e6756a9a88f8a606c01d3bdbeeefd483b4ae16e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d097a2ffed9db02abff24443c54ba027121116a5", @"/Views/_ViewImports.cshtml")]
     public class Views_Bike_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Bike>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "AddToWishList", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -197,7 +204,7 @@ WriteAttributeValue("", 424, Model.Img, 424, 10, false);
                     <div id=""comic-statbar"" class=""col d-flex flex-row align-items-center"">
                         <div class=""d-flex"">
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4567321fb4350c99382923bf6bef9e5ed35143d9694", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4567321fb4350c99382923bf6bef9e5ed35143d9864", async() => {
 #nullable restore
 #line 41 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Bike\Details.cshtml"
                                                                                                                       Write(Localizer["Wish List"]);
@@ -244,7 +251,7 @@ WriteAttributeValue("", 424, Model.Img, 424, 10, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4567321fb4350c99382923bf6bef9e5ed35143d12576", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4567321fb4350c99382923bf6bef9e5ed35143d12746", async() => {
 #nullable restore
 #line 44 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Bike\Details.cshtml"
                                                                                                                  Write(Localizer["Edit"]);
@@ -282,7 +289,7 @@ WriteAttributeValue("", 424, Model.Img, 424, 10, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4567321fb4350c99382923bf6bef9e5ed35143d15138", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4567321fb4350c99382923bf6bef9e5ed35143d15308", async() => {
 #nullable restore
 #line 45 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Bike\Details.cshtml"
                                                                                                                    Write(Localizer["Delete"]);
@@ -728,7 +735,7 @@ WriteAttributeValue("", 10365, commentsId, 10365, 11, false);
 #line hidden
 #nullable disable
             WriteLiteral("\r\n    </div>\r\n</div>\r\n\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4567321fb4350c99382923bf6bef9e5ed35143d34230", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4567321fb4350c99382923bf6bef9e5ed35143d34400", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -775,7 +782,7 @@ WriteAttributeValue("", 10365, commentsId, 10365, 11, false);
                 WriteLiteral(@"
     <script>(function () { var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true; uv.src = '//widget.uservoice.com/edoXvUiLvxUooiGFzaymDQ.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s) })()</script>
     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4567321fb4350c99382923bf6bef9e5ed35143d36813", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4567321fb4350c99382923bf6bef9e5ed35143d36983", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

@@ -16,6 +16,9 @@ namespace Comics.Domain
         //[Required]
         public string Tags { get; set; }
 
+        [Column("Description")]
+        public string? Description { get; set; }
+
         public IEnumerable<Comment> Comments { get; set; }
         public IList<Like> Likes { get; set; } = new List<Like>();
 

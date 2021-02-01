@@ -39,6 +39,14 @@
       "files": [
         "signalr.min.js"
       ]
+    },
+    {
+      "library": "summernote@0.8.18",
+      "destination": "wwwroot/lib/summernote/",
+      "files": [
+        "summernote-bs4.js",
+        "summernote-bs4.css"
+      ]
     }
   ]
 }

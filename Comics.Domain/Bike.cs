@@ -10,9 +10,6 @@ namespace Comics.Domain
         [Column("Producer")]
         public string? Producer { get; set; }
 
-        [Column("Description")]
-        public string? Description { get; set; }
-
         [Column("Color")]
         public string? Color { get; set; }
 

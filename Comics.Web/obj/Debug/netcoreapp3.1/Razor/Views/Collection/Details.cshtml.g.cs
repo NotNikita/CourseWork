@@ -74,8 +74,15 @@ using Microsoft.AspNetCore.Mvc.Localization;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
+using Comics.DAL;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"920e63b00d3215e02e3a6f955bd84c99f81e6c8f", @"/Views/Collection/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6e6756a9a88f8a606c01d3bdbeeefd483b4ae16e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d097a2ffed9db02abff24443c54ba027121116a5", @"/Views/_ViewImports.cshtml")]
     public class Views_Collection_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Comics.Domain.Collection>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Account", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -139,7 +146,7 @@ Write(Html.DisplayFor(model => model.Name));
 #line hidden
 #nullable disable
             WriteLiteral("</h4>\r\n    </div>\r\n\r\n    <p style=\"text-align:right\">Created by ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f8505", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f8675", async() => {
 #nullable restore
 #line 17 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Details.cshtml"
                                                                                                                     Write(Model.User.UserName);
@@ -212,7 +219,7 @@ WriteAttributeValue("", 856, Model.Img, 856, 10, false);
 #line hidden
 #nullable disable
             WriteLiteral("</h4>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f12785", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f12955", async() => {
 #nullable restore
 #line 37 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Details.cshtml"
                                                                                                                                                                         Write(Localizer["AddItem"]);
@@ -297,7 +304,7 @@ WriteAttributeValue("", 1556, item.Img, 1556, 9, false);
 #line hidden
 #nullable disable
             WriteLiteral("</p>\r\n                                <div class=\"d-flex justify-content-between align-items-center\">\r\n                                    <div class=\"btn-group\">\r\n\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f18199", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f18369", async() => {
 #nullable restore
 #line 53 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Details.cshtml"
                                                                                                                                                                         Write(Localizer["View"]);
@@ -347,7 +354,7 @@ WriteAttributeValue("", 1556, item.Img, 1556, 9, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f21722", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f21892", async() => {
 #nullable restore
 #line 54 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Details.cshtml"
                                                                                                                                                                      Write(Localizer["Edit"]);
@@ -413,7 +420,7 @@ WriteAttributeValue("", 1556, item.Img, 1556, 9, false);
 #line hidden
 #nullable disable
             WriteLiteral("            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f26018", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f26188", async() => {
 #nullable restore
 #line 67 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Details.cshtml"
                                                  Write(Localizer["Edit"]);
@@ -450,7 +457,7 @@ WriteAttributeValue("", 1556, item.Img, 1556, 9, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral(" |\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f28359", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920e63b00d3215e02e3a6f955bd84c99f81e6c8f28529", async() => {
 #nullable restore
 #line 68 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Details.cshtml"
                          Write(Localizer["BackToList"]);

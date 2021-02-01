@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="~/css/site.css" />
 
     <link rel="shortcut icon" href="/favicon.ico?v=2">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://leagueofcomicgeeks.com/assets/css/master.min.css?v=20201214">
     <link rel="stylesheet" type="text/css" href="https://leagueofcomicgeeks.com/assets/css/common.min.css?v=20210117">
     <link rel="stylesheet" type="text/css" href="~/lib/font-awesome/css/fontawesome.min.css">
@@ -51,9 +50,17 @@
                             </li>
                         }
 
-                        <li class="col-md-8" id="textInputDiv">
-                            <input class="form-control" name="input-custom-dropdown" type="text" id="fulltextSearch" placeholder="@Localizer["Search"]" />
+
+                    <form method="post" asp-controller="Home" asp-action="Search" class="row col-md-7">
+                        <li class="col-md-5">
+                            <input class="form-control" name="q" type="text" id="TextINputSearch" placeholder="Enter text to search" />
                         </li>
+                        <li class="col-md-2">
+                            <button class="btn btn-success" id="ApplyTextSearchButton">@Localizer["Search"]</button>
+                        </li>
+                    </form>
+
+
 
                     </ul>
                 </div>

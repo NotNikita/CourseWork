@@ -17,9 +17,9 @@ namespace Comics.Domain
         public DateTime? Bottled { get; set; }
 
         [Column("Strength")]
-        public int? Strength { get; set; } //"% Vol."
+        public int? Strength { get; set; }
 
         [Column("Size")]
-        public int? Size { get; set; } // 700 ml
+        public int? Size { get; set; }
     }
 }

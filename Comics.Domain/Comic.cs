@@ -10,9 +10,6 @@ namespace Comics.Domain
         [Column("Publisher")]
         public string Publisher { get; set; }
 
-        [Column("Description")]
-        public string? Description { get; set; }
-
         [Column("Pages")]
         public int? PageCount { get; set; }
 

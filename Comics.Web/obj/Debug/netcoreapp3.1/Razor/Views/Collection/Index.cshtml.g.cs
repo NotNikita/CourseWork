@@ -74,8 +74,15 @@ using Microsoft.AspNetCore.Mvc.Localization;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\_ViewImports.cshtml"
+using Comics.DAL;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9e3697d78b39ab8f7f6b69081979767c2233d5c1", @"/Views/Collection/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6e6756a9a88f8a606c01d3bdbeeefd483b4ae16e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d097a2ffed9db02abff24443c54ba027121116a5", @"/Views/_ViewImports.cshtml")]
     public class Views_Collection_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Collection>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -136,7 +143,7 @@ using Microsoft.AspNetCore.Mvc.Localization;
 #line hidden
 #nullable disable
             WriteLiteral("</p>\r\n        <p>\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e3697d78b39ab8f7f6b69081979767c2233d5c17604", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e3697d78b39ab8f7f6b69081979767c2233d5c17774", async() => {
 #nullable restore
 #line 14 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Index.cshtml"
                                                            Write(Localizer["CreateColl"]);
@@ -194,7 +201,7 @@ WriteAttributeValue("", 934, item.Img, 934, 9, false);
 #line hidden
 #nullable disable
             WriteLiteral("</p>\r\n                                <div class=\"d-flex justify-content-between align-items-center\">\r\n                                    <div class=\"btn-group\">\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e3697d78b39ab8f7f6b69081979767c2233d5c110964", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e3697d78b39ab8f7f6b69081979767c2233d5c111134", async() => {
 #nullable restore
 #line 31 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Index.cshtml"
                                                                                                                                           Write(Localizer["View"]);
@@ -233,7 +240,7 @@ WriteAttributeValue("", 934, item.Img, 934, 9, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e3697d78b39ab8f7f6b69081979767c2233d5c113675", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e3697d78b39ab8f7f6b69081979767c2233d5c113845", async() => {
 #nullable restore
 #line 32 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Index.cshtml"
                                                                                                                                        Write(Localizer["Edit"]);
@@ -281,7 +288,7 @@ WriteAttributeValue("", 934, item.Img, 934, 9, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e3697d78b39ab8f7f6b69081979767c2233d5c116713", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e3697d78b39ab8f7f6b69081979767c2233d5c116883", async() => {
 #nullable restore
 #line 35 "D:\UniverCity\iTransition\Comics\Comics.Web\Views\Collection\Index.cshtml"
                                                                                                                                              Write(Localizer["Delete"]);
