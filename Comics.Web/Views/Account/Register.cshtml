@@ -1,32 +1,39 @@
 ﻿@model Comics.Web.ViewModel.RegistrationViewModel
 @inject IViewLocalizer Localizer
 
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 
-<h2 class="form-header">@Localizer["Registration"]</h2>
-<form class="form-body" method="post" asp-action="Register" asp-controller="Account">
-    <div asp-validation-summary="ModelOnly"></div>
-    <div class="form-input">
-        <label asp-for="Name">@Localizer["UserName"]</label><br />
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
-    </div>
-    <div class="form-input">
-        <label asp-for="Email">@Localizer["Email"]</label><br />
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </div>
 
-    <div class="form-input">
-        <label asp-for="Password">@Localizer["Password"]</label><br />
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div class="form-input">
-        <label asp-for="PassowrdConfirm">@Localizer["PasswordConfirmation"]</label><br />
-        <input asp-for="PassowrdConfirm" />
-        <span asp-validation-for="PassowrdConfirm"></span>
-    </div>
-    <div class="form-button">
-        <input class="action-link-default lower-button" type="submit" value="@Localizer["SignUp"]" />
-    </div>
-</form>
+    <h2 class="form-header">@Localizer["Registration"]</h2>
+    <form class="form-body" method="post" asp-action="Register" asp-controller="Account">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-input">
+            <label asp-for="Name" style="background-color: #eee;">@Localizer["UserName"]</label><br />
+            <input asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="form-input">
+            <label asp-for="Email" style="background-color: #eee;">@Localizer["Email"]</label><br />
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <div class="form-input">
+            <label asp-for="Password" style="background-color: #eee;">@Localizer["Password"]</label><br />
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-input">
+            <label asp-for="PassowrdConfirm" style="background-color: #eee;">@Localizer["PasswordConfirmation"]</label><br />
+            <input asp-for="PassowrdConfirm" />
+            <span asp-validation-for="PassowrdConfirm"></span>
+        </div>
+        <div class="form-button">
+            <input class="action-link-default lower-button" type="submit" value="@Localizer["SignUp"]" />
+        </div>
+    </form>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
